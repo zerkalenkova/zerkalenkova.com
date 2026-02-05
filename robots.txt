@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zerkalenkova.com/sitemap.xml

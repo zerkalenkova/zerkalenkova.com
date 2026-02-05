@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project | Liza Zerkalenkova</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/split-layout.css">
+
+    <!-- SEO & Localization -->
+    <link rel="canonical" href="https://zerkalenkova.com/project.html" />
+    <link rel="alternate" hreflang="en" href="https://zerkalenkova.com/project.html" />
+    <link rel="alternate" hreflang="ru" href="https://zerkalenkova.com/ru/project.html" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">Liza Zerkalenkova</a>
+        <nav>
+            <ul class="nav-links-desktop">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#work" class="nav-link">Work</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <!-- Language Switcher Dynamic -->
+                <li class="lang-switch" style="margin-left: 10px; opacity: 1;">
+                    <span style="font-weight: 600; cursor: default;">EN</span>
+                    <span style="opacity: 0.3;">|</span>
+                    <a href="#" id="lang-switch-link" class="nav-link" style="opacity: 0.6;">RU</a>
+                </li>
+            </ul>
+            <div class="menu-toggle">Menu</div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Dynamic Case Content -->
+        <article class="case-study" id="case-content">
+
+            <div class="case-header">
+                <h1 class="title-xl" id="case-title">Loading Project...</h1>
+
+                <div class="case-meta-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+
+            <img src="" alt="Hero Image" class="case-hero-image" id="case-hero">
+
+            <div class="case-content">
+                <!-- Default Content Layout (will be removed by split logic) -->
+                <div class="case-sidebar">
+                    <div style="margin-bottom: 3rem;">
+                        <h3 class="title-lg" style="font-size: 1.5rem; margin-bottom: 1rem;">About</h3>
+                        <p id="case-about" style="color: var(--gray-medium);">loading...</p>
+                    </div>
+                    <div>
+                        <h3 class="title-lg" style="font-size: 1.5rem; margin-bottom: 1rem;">Challenge</h3>
+                        <p id="case-challenge" style="color: var(--gray-medium);">loading...</p>
+                    </div>
+                </div>
+
+                <div class="case-gallery" id="case-gallery">
+                    <!-- Images injected via JS -->
+                </div>
+            </div>
+
+        </article>
+
+        <!-- More Projects Section -->
+        <div id="more-projects" class="container"
+            style="margin-top: 100px; padding-top: 60px; border-top: 1px solid rgba(0,0,0,0.1);">
+            <!-- Injected via JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-cta">
+            <h2>Next Project?<br>Let’s talk.</h2>
+        </div>
+        <div class="footer-links">
+            <div class="footer-contacts-wrapper">
+                <a href="mailto:hello@zerkalenkova.com" class="contact-email" id="footer-email">
+                    <img src="assets/images/mail-sharp.svg" alt="" style="width: 32px; margin-right: 12px;">
+                    hello@zerkalenkova.com
+                </a>
+                <a href="https://t.me/zzerkaliza" class="contact-telegram" target="_blank">
+                    <img src="assets/images/telegram.svg" alt="" style="width: 32px; margin-right: 12px;">
+                    zzerkaliza
+                </a>
+            </div>
+            <div class="footer-copyright-wrapper">
+                <p>&copy; 2026 Liza Zerkalenkova</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+            const project = SITE_DATA.projects.find(p => p.id === projectId);
+
+            // SMART LANG SWITCHER
+            const switcher = document.getElementById('lang-switch-link');
+            if (projectId && switcher) {
+                switcher.href = `ru/project.html?id=${projectId}`;
+            } else if (switcher) {
+                switcher.href = `ru/index.html`;
+            }
+
+            // MOBILE MENU TOGGLE
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navUl = document.querySelector('nav ul');
+            if (menuToggle && navUl) {
+                menuToggle.addEventListener('click', () => {
+                    navUl.classList.toggle('show');
+                    if (navUl.classList.contains('show')) {
+                        menuToggle.textContent = 'CLOSE';
+                    } else {
+                        menuToggle.textContent = 'MENU';
+                    }
+                });
+
+                // Close on link click
+                navUl.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navUl.classList.remove('show');
+                        menuToggle.textContent = 'MENU';
+                    });
+                });
+            }
+
+            if (project) {
+                document.title = `${project.title} | Liza Zerkalenkova`;
+
+                // 1. SIMPLE POPULATION (Default fallback)
+                const titleEl = document.getElementById('case-title');
+                titleEl.textContent = project.title;
+
+                // Images & Text
+                const heroImg = document.getElementById('case-hero');
+                heroImg.src = project.heroImage;
+
+                document.getElementById('case-about').textContent = project.about;
+                document.getElementById('case-challenge').textContent = project.challenge;
+
+
+                // 2. LAYOUT SWITCHING LOGIC
+                if (project.layoutType === 'split') {
+                    // This is the Article element with ID case-content
+                    const article = document.getElementById('case-content');
+
+                    // --- A. RESTRUCTURE HERO (Split) ---
+                    const header = document.querySelector('.case-header');
+
+                    // REBUILD META GRID
+                    const metaGrid = document.querySelector('.case-meta-grid');
+                    metaGrid.innerHTML = '';
+
+                    let fields = [];
+                    // Logic to determine metadata fields based on project ID
+                    if (project.id === 'rosatom-report') {
+                        fields = [
+                            { label: "FORMAT:", value: "PRINT & DIGITAL REPORT" },
+                            { label: "PROJECT TYPE:", value: "ESG & REPUTATION COMMUNICATION" },
+                            { label: "YEAR:", value: "2024" },
+                            { label: "FIELD:", value: "ENERGY & NUCLEAR INDUSTRY" }
+                        ];
+                        // Explicit Title for Rosatom
+                        document.getElementById('case-title').innerHTML = "Environmental<br>Impact Report<br>for Rosatom";
+                    } else if (project.id === 'values-research') {
+                        fields = [
+                            { label: "FORMAT:", value: project.format ? project.format.toUpperCase() : "RESEARCH REPORT" },
+                            { label: "PROJECT TYPE:", value: project.type ? project.type.toUpperCase() : "PUBLIC COMMUNICATION STRATEGY" },
+                            { label: "YEAR:", value: project.date },
+                            { label: "FIELD:", value: project.fields.join(" & ").toUpperCase() }
+                        ];
+                        // Explicit Title for Values
+                        document.getElementById('case-title').innerHTML = "Social Values Research Report";
+                    } else if (project.id === 'ai-science-review') {
+                        fields = [
+                            { label: "FORMAT:", value: "STRATEGIC RESEARCH PRESENTATION" },
+                            { label: "PROJECT TYPE:", value: "EXECUTIVE ANALYTICAL COMMUNICATION" },
+                            { label: "YEAR:", value: "2026" },
+                            { label: "FIELD:", value: "ARTIFICIAL INTELLIGENCE & SCIENCE POLICY" }
+                        ];
+                        // Explicit Title for AI
+                        document.getElementById('case-title').innerHTML = "AI Science<br>Development Review";
+                    } else if (project.id === 'spirituality-values') {
+                        fields = [
+                            { label: "FORMAT:", value: "RESEARCH REPORT" },
+                            { label: "PROJECT TYPE:", value: "PUBLIC RESEARCH COMMUNICATION" },
+                            { label: "YEAR:", value: "2025" },
+                            { label: "FIELD:", value: "SOCIOLOGY OF VALUES & YOUTH POLICY" }
+                        ];
+                        // Explicit Title for Spirituality
+                        document.getElementById('case-title').innerHTML = "Youth Spirituality<br>& Values";
+                    } else if (project.id === 'transport-comms') {
+                        fields = [
+                            { label: "FORMAT:", value: "EXECUTIVE PRESENTATION COLLECTION" },
+                            { label: "PROJECT TYPE:", value: "STRATEGIC TRANSPORT COMMUNICATIONS" },
+                            { label: "YEAR:", value: "2024–2025" },
+                            { label: "FIELD:", value: "TRANSPORT & PUBLIC INFRASTRUCTURE" },
+                            { label: "AUDIENCE:", value: "FEDERAL MINISTRY" }
+                        ];
+                        // Explicit Title
+                        document.getElementById('case-title').innerHTML = "Strategic Transport Communications";
+                    } else {
+                        // Fallback for generic split projects
+                        fields = [
+                            { label: "TYPE:", value: project.type ? project.type.toUpperCase() : "" },
+                            { label: "YEAR:", value: project.date },
+                            { label: "FIELD:", value: project.fields ? project.fields.join(" & ").toUpperCase() : "" }
+                        ];
+                    }
+
+                    fields.forEach(item => {
+                        const row = document.createElement('div');
+                        row.className = 'meta-row';
+                        const labelDiv = document.createElement('div');
+                        labelDiv.className = 'meta-label';
+                        labelDiv.textContent = item.label;
+                        const valDiv = document.createElement('div');
+                        valDiv.className = 'meta-value';
+                        valDiv.textContent = item.value;
+                        row.appendChild(labelDiv);
+                        row.appendChild(valDiv);
+                        metaGrid.appendChild(row);
+                    });
+
+                    if (project.id === 'values-research' || project.id === 'transport-comms') {
+                        // VALUES / TRANSPORT LAYOUT
+                        /* "Image first, Format block below, Title split" */
+
+                        const valuesWrapper = document.createElement('div');
+                        valuesWrapper.className = 'layout-values';
+
+                        // Override Grid to be single column/centered for this specific stack if needed, 
+                        // BUT user said "Move layout...". 
+                        // Actually, if we put Meta under Image in Main Col, we don't need Sidebar.
+                        // Let's modify 'layout-values' CSS in place here or just use a custom structure?
+                        // The existing CSS for .layout-values is 1fr 300px.
+                        // If we put everything in Main, Sidebar is empty.
+                        // Let's put Meta in Main.
+
+                        const mainCol = document.createElement('div');
+                        mainCol.className = 'values-main';
+
+                        // 1. Image
+                        heroImg.className = 'case-hero-image';
+                        mainCol.appendChild(heroImg);
+
+                        // 2. Meta (Format block)
+                        // "Format block should sit under image"
+                        metaGrid.style.marginTop = "20px";
+                        metaGrid.style.marginBottom = "20px";
+                        metaGrid.style.display = "grid";
+                        metaGrid.style.gridTemplateColumns = "auto auto"; /* Restore grid look from sidebar column look */
+                        metaGrid.style.justifyContent = "start";
+                        metaGrid.style.columnGap = "20px";
+                        metaGrid.style.rowGap = "8px";
+
+                        // Re-style items for horizontal flow if they were stacked? 
+                        // The metaGrid css for layout-values was styled as flex col. 
+                        // I'll reset it to grid inline here.
+
+                        mainCol.appendChild(metaGrid);
+
+                        // 3. Title
+                        const titleElement = document.getElementById('case-title');
+                        if (project.id === 'transport-comms') {
+                            titleElement.innerHTML = "Strategic Transport<br>Communication";
+                        } else if (project.id === 'values-research') {
+                            titleElement.innerHTML = "Social Values<br>Research Report";
+                        }
+
+                        // Center title or align left? Spec says "Align to same left edge".
+                        titleElement.style.marginTop = "20px";
+                        mainCol.appendChild(titleElement);
+
+                        // Clear Sidebar or remove it from grid?
+                        // If I append only mainCol, grid will try to place it.
+                        // Let's append mainCol.
+
+                        valuesWrapper.innerHTML = ''; // Clear defaults
+                        valuesWrapper.appendChild(mainCol);
+
+                        // We need to fix the CSS for .layout-values to support single child or just override grid
+                        valuesWrapper.style.gridTemplateColumns = "1fr";
+                        valuesWrapper.style.maxWidth = "800px"; // Constrain width if single column
+                        valuesWrapper.style.marginLeft = "0"; // Align left? Or center? 
+                        // "Align to same left edge as text blocks". 
+                        // Text blocks are usually centered or have max-width. 
+                        // Let's keep margin 0 auto with max-width.
+                        valuesWrapper.style.paddingLeft = "5vw"; // Match container padding
+
+                        article.insertBefore(valuesWrapper, article.firstChild);
+
+                    } else {
+                        // ROSATOM / DEFAULT SPLIT LAYOUT
+
+                        if (project.id === 'rosatom-report') {
+                            heroImg.classList.add('rosatom-hero-adj');
+                            // Ensure title is correct
+                            document.getElementById('case-title').innerHTML = "Environmental<br>Impact Report<br>for Rosatom";
+                        }
+
+                        // Special adjustment for Spirituality
+                        if (project.id === 'spirituality-values') {
+                            heroImg.style.marginTop = '60px';
+                            // "Move format block higher" -> Done via CSS
+                            // Title
+                            document.getElementById('case-title').innerHTML = "Youth Spirituality<br>& Values";
+                        }
+
+                        // Move meta grid ABOVE title
+                        const titleElement = document.getElementById('case-title');
+                        header.insertBefore(metaGrid, titleElement);
+
+                        // Wrap Hero + Header
+                        const splitWrapper = document.createElement('div');
+                        splitWrapper.className = 'layout-split';
+                        splitWrapper.appendChild(heroImg);
+                        splitWrapper.appendChild(header);
+                        article.insertBefore(splitWrapper, article.firstChild);
+                    }
+
+
+                    // --- B. RESTRUCTURE CONTENT ---
+                    const oldContentDiv = document.querySelector('div.case-content');
+                    if (oldContentDiv) oldContentDiv.remove();
+
+                    const contentContainer = document.createElement('div');
+                    contentContainer.className = 'section-split-container';
+                    article.appendChild(contentContainer);
+
+                    // Helper createRow
+                    function createRow(title, text) {
+                        const row = document.createElement('div');
+                        row.className = 'section-split-row';
+                        const h3 = document.createElement('h3');
+                        h3.textContent = title.toLowerCase() + ".";
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = 'section-split-content';
+
+                        const p = document.createElement('p');
+                        p.textContent = text;
+                        contentDiv.appendChild(p);
+                        row.appendChild(h3);
+                        row.appendChild(contentDiv);
+                        return row;
+                    }
+
+                    // Helper renderGalleryItems
+                    function renderGalleryItems(items, container) {
+                        items.forEach(item => {
+                            if (Array.isArray(item)) {
+                                // Pair
+                                const row = document.createElement('div');
+                                row.className = 'gallery-pair-row';
+                                row.style.display = 'flex';
+                                row.style.gap = '20px';
+                                row.style.width = '60%'; // Match standard gallery width
+                                row.style.maxWidth = '1000px';
+                                row.style.justifyContent = 'center';
+                                item.forEach(src => {
+                                    const img = document.createElement('img');
+                                    img.src = src;
+                                    img.style.width = '100%';
+                                    img.style.flex = '1';
+                                    img.style.height = 'auto';
+                                    row.appendChild(img);
+                                });
+                                container.appendChild(row);
+                            } else {
+                                // Single image
+                                const img = document.createElement('img');
+                                img.src = item;
+                                container.appendChild(img);
+                            }
+                        });
+                    }
+
+                    // 1. About Section (Always first)
+                    contentContainer.appendChild(createRow('About', project.about));
+
+                    // CONTENT FLOW
+                    if (project.id === 'values-research') {
+                        // Special Flow for Values: Image 1 (Full) -> Challenge -> Rest (Pairs)
+
+                        // 2. First Image (Full container width)
+                        if (project.gallery.length > 0) {
+                            // Render first item
+                            const img1 = document.createElement('img');
+                            img1.src = project.gallery[0];
+                            img1.style.width = '100%';
+                            img1.style.maxWidth = '1300px';
+                            img1.style.display = 'block';
+                            img1.style.margin = '0 auto 120px auto';
+                            contentContainer.appendChild(img1);
+                        }
+
+                        // 3. Challenge
+                        contentContainer.appendChild(createRow('Challenge', project.challenge));
+
+                        // 4. Remaining Images (Pairs)
+                        if (project.gallery.length > 1) {
+                            const galleryDiv2 = document.createElement('div');
+                            galleryDiv2.className = 'layout-split-gallery';
+                            // Render rest
+                            renderGalleryItems(project.gallery.slice(1), galleryDiv2);
+                            contentContainer.appendChild(galleryDiv2);
+                        }
+
+                    } else if (project.id === 'ai-science-review') {
+                        // AI Science Flow: About → ai-1 → Challenge → ai-2, ai-3, ai-4
+
+                        // 2. First Image (ai-1) after About
+                        if (project.gallery.length > 0) {
+                            const img1 = document.createElement('img');
+                            img1.src = project.gallery[0];
+                            img1.style.width = '100%';
+                            img1.style.maxWidth = '1300px';
+                            img1.style.display = 'block';
+                            img1.style.margin = '0 auto 120px auto';
+                            contentContainer.appendChild(img1);
+                        }
+
+                        // 3. Challenge
+                        contentContainer.appendChild(createRow('Challenge', project.challenge));
+
+                        // 4. Remaining Images (ai-2, ai-3, ai-4)
+                        if (project.gallery.length > 1) {
+                            const galleryDiv2 = document.createElement('div');
+                            galleryDiv2.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(1), galleryDiv2);
+                            contentContainer.appendChild(galleryDiv2);
+                        }
+
+                    } else if (project.id === 'spirituality-values') {
+                        // Spirituality Flow: About → Video → Challenge → Gallery
+
+                        // 2. Video after About
+                        if (project.aboutVideo) {
+                            const video = document.createElement('video');
+                            video.src = project.aboutVideo;
+                            video.autoplay = true;
+                            video.muted = true;
+                            video.loop = true;
+                            video.playsInline = true;
+                            video.style.width = '100%';
+                            video.style.maxWidth = '1300px';
+                            video.style.display = 'block';
+                            video.style.margin = '0 auto 120px auto';
+                            contentContainer.appendChild(video);
+                        }
+
+                        // 3. Challenge
+                        contentContainer.appendChild(createRow('Challenge', project.challenge));
+
+                        // 4. Gallery Images
+                        if (project.gallery.length > 0) {
+                            const galleryDiv = document.createElement('div');
+                            galleryDiv.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery, galleryDiv);
+                            contentContainer.appendChild(galleryDiv);
+                            contentContainer.appendChild(galleryDiv);
+                        }
+
+                    } else if (project.id === 'transport-comms') {
+                        // Transport Flow: About → Grid 1 (0-3) → Challenge → Grid 2 (4-9)
+
+                        // 2. Grid 1: Images 1-4 (indices 0-3)
+                        if (project.gallery.length > 0) {
+                            const grid1 = document.createElement('div');
+                            grid1.className = 'gallery-grid-2col'; // New 2-col CSS class
+
+                            // Render first 4 images
+                            project.gallery.slice(0, 4).forEach(src => {
+                                const img = document.createElement('img');
+                                img.src = src;
+                                grid1.appendChild(img);
+                            });
+                            contentContainer.appendChild(grid1);
+                        }
+
+                        // 3. Challenge
+                        contentContainer.appendChild(createRow('Challenge', project.challenge));
+
+                        // 4. Grid 2: Images 5-10 (indices 4-9)
+                        if (project.gallery.length > 4) {
+                            const grid2 = document.createElement('div');
+                            grid2.className = 'gallery-grid-2col';
+
+                            project.gallery.slice(4, 10).forEach(src => {
+                                const img = document.createElement('img');
+                                img.src = src;
+                                grid2.appendChild(img);
+                            });
+                            contentContainer.appendChild(grid2);
+                        }
+
+                    } else {
+                        // Default Split / Rosatom Logic (0,1 -> Challenge -> 2+)
+                        if (project.gallery.length > 0) {
+                            const galleryDiv = document.createElement('div');
+                            galleryDiv.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(0, 2), galleryDiv);
+                            contentContainer.appendChild(galleryDiv);
+                        }
+
+                        contentContainer.appendChild(createRow('Challenge', project.challenge));
+
+                        if (project.gallery.length > 2) {
+                            const galleryDiv2 = document.createElement('div');
+                            galleryDiv2.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(2), galleryDiv2);
+                            contentContainer.appendChild(galleryDiv2);
+                        }
+                    }
+
+                } else {
+                    // DEFAULT LAYOUT GALLERY (Non-split layout projects)
+                    const galleryContainer = document.getElementById('case-gallery');
+                    project.gallery.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.loading = "lazy";
+                        galleryContainer.appendChild(img);
+                    });
+                }
+
+                // --- MORE PROJECTS LOGIC ---
+                const moreContainer = document.getElementById('more-projects');
+                if (moreContainer) {
+                    const currentIndex = SITE_DATA.projects.findIndex(p => p.id === projectId);
+                    // Select next 3 projects, wrapping around
+                    const nextProjects = [];
+                    for (let i = 1; i <= 3; i++) {
+                        const nextIndex = (currentIndex + i) % SITE_DATA.projects.length;
+                        nextProjects.push(SITE_DATA.projects[nextIndex]);
+                    }
+
+                    // Render
+                    let html = `
+                        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+                            <h2 style="font-size: 2rem; font-weight: 400; margin: 0;">More projects</h2>
+                            <a href="index.html#work" class="view-all-btn" style="font-size: 1rem; color: #111; text-decoration: none; border-bottom: 1px solid #111; padding-bottom: 2px;">All projects</a>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                    `;
+
+                    nextProjects.forEach(bp => {
+                        html += `
+                            <a href="project.html?id=${bp.id}" style="text-decoration: none; color: inherit; display: block; group: hover;">
+                                <div style="margin-bottom: 20px; overflow: hidden; aspect-ratio: 16/10; background: #f4f4f4;">
+                                    <img src="${bp.thumbnail}" alt="${bp.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                                </div>
+                                <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 8px; line-height: 1.3;">${bp.title}</h3>
+                                <p style="font-size: 0.9rem; color: #666; margin: 0;">${bp.type}</p>
+                            </a>
+                        `;
+                    });
+
+                    html += `</div>`;
+                    moreContainer.innerHTML = html;
+                }
+
+                // Fade in
+                document.body.classList.add('loaded');
+
+            } else {
+                document.querySelector('main').innerHTML = "<div class='container' style='padding-top:150px'><h1>Project not found</h1><p><a href='index.html'>Back home</a></p></div>";
+                document.body.classList.add('loaded');
+            }
+        });
+    </script>
+</body>
+
+</html>

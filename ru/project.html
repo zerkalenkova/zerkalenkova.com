@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект | Лиза Зеркаленкова</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/split-layout.css">
+
+    <!-- SEO & Localization -->
+    <link rel="canonical" href="https://zerkalenkova.com/ru/project.html" />
+    <link rel="alternate" hreflang="en" href="https://zerkalenkova.com/project.html" />
+    <link rel="alternate" hreflang="ru" href="https://zerkalenkova.com/ru/project.html" />
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Лиза Зеркаленкова</a>
+        <nav>
+            <ul class="nav-links-desktop">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="index.html#work" class="nav-link">Проекты</a></li>
+                <li><a href="services.html" class="nav-link">Экспертиза</a></li>
+                <li><a href="about.html" class="nav-link">Обо мне</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+                <!-- Language Switcher Dynamic -->
+                <li class="lang-switch" style="margin-left: 10px; opacity: 1;">
+                    <a href="#" id="lang-switch-link" class="nav-link" style="opacity: 0.6;">EN</a>
+                    <span style="opacity: 0.3;">|</span>
+                    <span style="font-weight: 600; cursor: default;">RU</span>
+                </li>
+            </ul>
+            <div class="menu-toggle">МЕНЮ</div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="case-study" id="case-content">
+
+            <div class="case-header">
+                <h1 class="title-xl" id="case-title">Загрузка проекта...</h1>
+
+                <div class="case-meta-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+
+            <img src="" alt="Обложка проекта" class="case-hero-image" id="case-hero">
+
+            <div class="case-content">
+                <!-- Default Content Layout (will be removed by split logic) -->
+                <div class="case-sidebar">
+                    <div style="margin-bottom: 3rem;">
+                        <h3 class="title-lg" style="font-size: 1.5rem; margin-bottom: 1rem;">О проекте</h3>
+                        <p id="case-about" style="color: var(--gray-medium);">загрузка...</p>
+                    </div>
+                    <div>
+                        <h3 class="title-lg" style="font-size: 1.5rem; margin-bottom: 1rem;">Задача</h3>
+                        <p id="case-challenge" style="color: var(--gray-medium);">загрузка...</p>
+                    </div>
+                </div>
+
+                <div class="case-gallery" id="case-gallery">
+                    <!-- Images injected via JS -->
+                </div>
+            </div>
+
+        </article>
+
+        <!-- More Projects Section -->
+        <div id="more-projects" class="container"
+            style="margin-top: 100px; padding-top: 60px; border-top: 1px solid rgba(0,0,0,0.1);">
+            <!-- Injected via JS -->
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-cta">
+            <h2>Ваши смыслы заслуживают сильного воплощения</h2>
+        </div>
+        <div class="footer-links">
+            <div class="footer-contacts-wrapper">
+                <a href="mailto:hello@zerkalenkova.com" class="contact-email" id="footer-email">
+                    <img src="../assets/images/mail-sharp.svg" alt="" style="width: 32px; margin-right: 12px;">
+                    hello@zerkalenkova.com
+                </a>
+                <a href="https://t.me/zzerkaliza" class="contact-telegram" target="_blank">
+                    <img src="../assets/images/telegram.svg" alt="" style="width: 32px; margin-right: 12px;">
+                    zzerkaliza
+                </a>
+            </div>
+            <div class="footer-copyright-wrapper">
+                <p>&copy; 2026 Лиза Зеркаленкова</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/data-ru.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+            const project = SITE_DATA.projects.find(p => p.id === projectId);
+
+            // SMART LANG SWITCHER
+            const switcher = document.getElementById('lang-switch-link');
+            if (projectId && switcher) {
+                switcher.href = `../project.html?id=${projectId}`;
+            } else if (switcher) {
+                switcher.href = `../index.html`;
+            }
+
+            // MOBILE MENU TOGGLE
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navUl = document.querySelector('nav ul');
+            if (menuToggle && navUl) {
+                menuToggle.addEventListener('click', () => {
+                    navUl.classList.toggle('show');
+                    if (navUl.classList.contains('show')) {
+                        menuToggle.textContent = 'ЗАКРЫТЬ';
+                    } else {
+                        menuToggle.textContent = 'МЕНЮ';
+                    }
+                });
+
+                // Close on link click
+                navUl.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navUl.classList.remove('show');
+                        menuToggle.textContent = 'МЕНЮ';
+                    });
+                });
+            }
+
+            if (project) {
+                document.title = `${project.title} | Лиза Зеркаленкова`;
+
+                const titleEl = document.getElementById('case-title');
+                titleEl.textContent = project.title;
+
+                const heroImg = document.getElementById('case-hero');
+                heroImg.src = `../${project.heroImage}`;
+
+                document.getElementById('case-about').textContent = project.about;
+                document.getElementById('case-challenge').textContent = project.challenge;
+
+
+                // 2. LAYOUT SWITCHING LOGIC
+                if (project.layoutType === 'split') {
+                    // This is the Article element with ID case-content
+                    const article = document.getElementById('case-content');
+
+                    // --- A. RESTRUCTURE HERO (Split) ---
+                    const header = document.querySelector('.case-header');
+
+                    // REBUILD META GRID
+                    const metaGrid = document.querySelector('.case-meta-grid');
+                    metaGrid.innerHTML = '';
+
+                    let fields = [];
+                    // Logic to determine metadata fields based on project ID
+                    if (project.id === 'rosatom-report') {
+                        fields = [
+                            { label: "ФОРМАТ:", value: "ОТЧЕТ (ПЕЧАТЬ И DIGITAL)" },
+                            { label: "ТИП ПРОЕКТА:", value: "ESG КОММУНИКАЦИЯ" },
+                            { label: "ГОД:", value: "2024" },
+                            { label: "ОТРАСЛЬ:", value: "АТОМНАЯ ЭНЕРГЕТИКА" }
+                        ];
+                    } else if (project.id === 'values-research') {
+                        fields = [
+                            { label: "ФОРМАТ:", value: "ИССЛЕДОВАТЕЛЬСКИЙ ОТЧЕТ" },
+                            { label: "ТИП ПРОЕКТА:", value: "ОБЩЕСТВЕННАЯ КОММУНИКАЦИЯ" },
+                            { label: "ГОД:", value: "2025" },
+                            { label: "ОТРАСЛЬ:", value: "СОЦИОЛОГИЯ ЦЕННОСТЕЙ" }
+                        ];
+                    } else if (project.id === 'transport-comms') {
+                        fields = [
+                            { label: "ФОРМАТ:", value: "КОЛЛЕКЦИЯ ПРЕЗЕНТАЦИЙ" },
+                            { label: "ТИП ПРОЕКТА:", value: "СТРАТЕГИЧЕСКИЕ КОММУНИКАЦИИ" },
+                            { label: "ГОД:", value: "2024–2025" },
+                            { label: "ОТРАСЛЬ:", value: "ТРАНСПОРТ И ИНФРАСТРУКТУРА" }
+                        ];
+                    } else if (project.id === 'spirituality-values') {
+                        fields = [
+                            { label: "ФОРМАТ:", value: "ИССЛЕДОВАТЕЛЬСКИЙ ОТЧЕТ" },
+                            { label: "ТИП ПРОЕКТА:", value: "ОБЩЕСТВЕННАЯ КОММУНИКАЦИЯ" },
+                            { label: "ГОД:", value: "2025" },
+                            { label: "ОТРАСЛЬ:", value: "СОЦИОЛОГИЯ ЦЕННОСТЕЙ" }
+                        ];
+                        document.getElementById('case-title').innerHTML = "Молодежь<br>и духовность";
+                    }
+
+                    fields.forEach(item => {
+                        const row = document.createElement('div');
+                        row.className = 'meta-row';
+                        const labelDiv = document.createElement('div');
+                        labelDiv.className = 'meta-label';
+                        labelDiv.textContent = item.label;
+                        const valDiv = document.createElement('div');
+                        valDiv.className = 'meta-value';
+                        valDiv.textContent = item.value;
+                        row.appendChild(labelDiv);
+                        row.appendChild(valDiv);
+                        metaGrid.appendChild(row);
+                    });
+
+                    // LAYOUT VALUES / TRANSPORT
+                    if (project.id === 'values-research' || project.id === 'transport-comms') {
+                        const valuesWrapper = document.createElement('div');
+                        valuesWrapper.className = 'layout-values';
+
+                        // Main Column: Image + Meta + Title
+                        const mainCol = document.createElement('div');
+                        mainCol.className = 'values-main';
+
+                        heroImg.className = 'case-hero-image';
+                        mainCol.appendChild(heroImg);
+
+                        // Meta (Format block)
+                        metaGrid.style.marginTop = "20px";
+                        metaGrid.style.marginBottom = "20px";
+                        metaGrid.style.display = "grid";
+                        metaGrid.style.gridTemplateColumns = "auto auto";
+                        metaGrid.style.justifyContent = "start";
+                        metaGrid.style.columnGap = "20px";
+                        metaGrid.style.rowGap = "8px";
+                        mainCol.appendChild(metaGrid);
+
+                        // Title
+                        const titleElement = document.getElementById('case-title');
+                        titleElement.style.marginTop = "20px";
+                        mainCol.appendChild(titleElement);
+
+                        valuesWrapper.appendChild(mainCol);
+
+                        // Style overrides for single column
+                        valuesWrapper.style.gridTemplateColumns = "1fr";
+                        valuesWrapper.style.maxWidth = "800px";
+                        valuesWrapper.style.marginLeft = "0";
+                        valuesWrapper.style.paddingLeft = "5vw";
+
+                        article.insertBefore(valuesWrapper, article.firstChild);
+
+                    } else {
+                        // Standard Split Layout
+
+                        if (project.id === 'rosatom-report') {
+                            heroImg.classList.add('rosatom-hero-adj');
+                        }
+
+                        if (project.id === 'spirituality-values') {
+                            heroImg.style.marginTop = '60px';
+                        }
+
+                        // Move meta grid ABOVE title (Standard for Split)
+                        const titleElement = document.getElementById('case-title');
+                        header.insertBefore(metaGrid, titleElement);
+
+                        const splitWrapper = document.createElement('div');
+                        splitWrapper.className = 'layout-split';
+                        splitWrapper.appendChild(heroImg);
+                        splitWrapper.appendChild(header);
+                        article.insertBefore(splitWrapper, article.firstChild);
+                    }
+
+                    // Content Logic
+                    const oldContentDiv = document.querySelector('div.case-content');
+                    if (oldContentDiv) oldContentDiv.remove();
+
+                    const contentContainer = document.createElement('div');
+                    contentContainer.className = 'section-split-container';
+                    article.appendChild(contentContainer);
+
+                    function createRow(title, text) {
+                        const row = document.createElement('div');
+                        row.className = 'section-split-row';
+                        const h3 = document.createElement('h3');
+                        h3.textContent = title + ".";
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = 'section-split-content';
+                        const p = document.createElement('p');
+                        p.textContent = text;
+                        contentDiv.appendChild(p);
+                        row.appendChild(h3);
+                        row.appendChild(contentDiv);
+                        return row;
+                    }
+
+                    function renderGalleryItems(items, container) {
+                        items.forEach(item => {
+                            if (Array.isArray(item)) {
+                                const row = document.createElement('div');
+                                row.className = 'gallery-pair-row';
+                                row.style.display = 'flex';
+                                row.style.gap = '20px';
+                                row.style.width = '60%';
+                                row.style.maxWidth = '1000px';
+                                row.style.justifyContent = 'center';
+                                item.forEach(src => {
+                                    const img = document.createElement('img');
+                                    img.src = `../${src}`;
+                                    img.style.width = '100%';
+                                    img.style.flex = '1';
+                                    img.style.height = 'auto';
+                                    row.appendChild(img);
+                                });
+                                container.appendChild(row);
+                            } else {
+                                const img = document.createElement('img');
+                                img.src = `../${item}`;
+                                container.appendChild(img);
+                            }
+                        });
+                    }
+
+                    // 1. About
+                    contentContainer.appendChild(createRow('О проекте', project.about));
+
+                    // CONTENT FLOWS
+                    if (project.id === 'values-research') {
+                        // Values Flow
+                        if (project.gallery.length > 0) {
+                            const img1 = document.createElement('img');
+                            img1.src = `../${project.gallery[0]}`;
+                            img1.style.width = '100%';
+                            img1.style.maxWidth = '1300px';
+                            img1.style.display = 'block';
+                            img1.style.margin = '0 auto 120px auto';
+                            contentContainer.appendChild(img1);
+                        }
+                        contentContainer.appendChild(createRow('Задача', project.challenge));
+                        if (project.gallery.length > 1) {
+                            const galleryDiv2 = document.createElement('div');
+                            galleryDiv2.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(1), galleryDiv2);
+                            contentContainer.appendChild(galleryDiv2);
+                        }
+
+                    } else if (project.id === 'ai-science-review') {
+                        if (project.gallery.length > 0) {
+                            const img1 = document.createElement('img');
+                            img1.src = `../${project.gallery[0]}`;
+                            img1.style.width = '100%';
+                            img1.style.maxWidth = '1300px';
+                            img1.style.display = 'block';
+                            img1.style.margin = '0 auto 120px auto';
+                            contentContainer.appendChild(img1);
+                        }
+                        contentContainer.appendChild(createRow('Задача', project.challenge));
+                        if (project.gallery.length > 1) {
+                            const galleryDiv2 = document.createElement('div');
+                            galleryDiv2.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(1), galleryDiv2);
+                            contentContainer.appendChild(galleryDiv2);
+                        }
+
+                    } else if (project.id === 'spirituality-values') {
+                        if (project.aboutVideo) {
+                            const video = document.createElement('video');
+                            video.src = `../${project.aboutVideo}`;
+                            video.autoplay = true;
+                            video.muted = true;
+                            video.loop = true;
+                            video.playsInline = true;
+                            video.style.width = '100%';
+                            video.style.maxWidth = '1300px';
+                            video.style.display = 'block';
+                            video.style.margin = '0 auto 120px auto';
+                            contentContainer.appendChild(video);
+                        }
+                        contentContainer.appendChild(createRow('Задача', project.challenge));
+                        if (project.gallery.length > 0) {
+                            const galleryDiv = document.createElement('div');
+                            galleryDiv.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery, galleryDiv);
+                            contentContainer.appendChild(galleryDiv);
+                        }
+
+                    } else if (project.id === 'transport-comms') {
+                        const galleryGrid1 = document.createElement('div');
+                        galleryGrid1.className = 'gallery-grid-2col'; // Use CSS class
+
+                        project.gallery.slice(0, 4).forEach(src => {
+                            const img = document.createElement('img');
+                            img.src = `../${src}`;
+                            galleryGrid1.appendChild(img);
+                        });
+                        contentContainer.appendChild(galleryGrid1);
+
+                        contentContainer.appendChild(createRow('Задача', project.challenge));
+
+                        const galleryGrid2 = document.createElement('div');
+                        galleryGrid2.className = 'gallery-grid-2col'; // Use CSS class
+
+                        project.gallery.slice(4).forEach(src => {
+                            const img = document.createElement('img');
+                            img.src = `../${src}`;
+                            galleryGrid2.appendChild(img);
+                        });
+                        contentContainer.appendChild(galleryGrid2);
+
+                    } else if (project.id === 'rosatom-report') {
+                        if (project.gallery.length > 0) {
+                            const galleryDiv = document.createElement('div');
+                            galleryDiv.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(0, 2), galleryDiv);
+                            contentContainer.appendChild(galleryDiv);
+                        }
+
+                        contentContainer.appendChild(createRow('Задача', project.challenge));
+
+                        if (project.gallery.length > 2) {
+                            const galleryDiv2 = document.createElement('div');
+                            galleryDiv2.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(2), galleryDiv2);
+                            contentContainer.appendChild(galleryDiv2);
+                        }
+                    } else {
+                        // Default Split
+                        if (project.gallery.length > 0) {
+                            const galleryDiv = document.createElement('div');
+                            galleryDiv.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(0, 2), galleryDiv);
+                            contentContainer.appendChild(galleryDiv);
+                        }
+                        contentContainer.appendChild(createRow('Задача', project.challenge));
+                        if (project.gallery.length > 2) {
+                            const galleryDiv2 = document.createElement('div');
+                            galleryDiv2.className = 'layout-split-gallery';
+                            renderGalleryItems(project.gallery.slice(2), galleryDiv2);
+                            contentContainer.appendChild(galleryDiv2);
+                        }
+                    }
+
+                } else {
+                    // Обычная галерея
+                    const galleryContainer = document.getElementById('case-gallery');
+                    project.gallery.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = `../${imgSrc}`;
+                        galleryContainer.appendChild(img);
+                    });
+                }
+
+                // --- MORE PROJECTS LOGIC (RU) ---
+                const moreContainer = document.getElementById('more-projects');
+                if (moreContainer) {
+                    const currentIndex = SITE_DATA.projects.findIndex(p => p.id === projectId);
+                    // Select next 3 projects
+                    const nextProjects = [];
+                    for (let i = 1; i <= 3; i++) {
+                        const nextIndex = (currentIndex + i) % SITE_DATA.projects.length;
+                        nextProjects.push(SITE_DATA.projects[nextIndex]);
+                    }
+
+                    // Render
+                    let html = `
+                        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+                            <h2 style="font-size: 2rem; font-weight: 400; margin: 0;">Другие проекты</h2>
+                            <a href="index.html#work" class="view-all-btn" style="font-size: 1rem; color: #111; text-decoration: none; border-bottom: 1px solid #111; padding-bottom: 2px;">Все проекты</a>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                    `;
+
+                    nextProjects.forEach(bp => {
+                        html += `
+                            <a href="project.html?id=${bp.id}" style="text-decoration: none; color: inherit; display: block; group: hover;">
+                                <div style="margin-bottom: 20px; overflow: hidden; aspect-ratio: 16/10; background: #f4f4f4;">
+                                    <img src="../${bp.thumbnail}" alt="${bp.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                                </div>
+                                <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 8px; line-height: 1.3;">${bp.title}</h3>
+                                <p style="font-size: 0.9rem; color: #666; margin: 0;">${bp.type}</p>
+                            </a>
+                        `;
+                    });
+
+                    html += `</div>`;
+                    moreContainer.innerHTML = html;
+                }
+
+                document.body.classList.add('loaded');
+
+            } else {
+                document.querySelector('main').innerHTML = "<div class='container' style='padding-top:150px'><h1>Проект не найден</h1><p><a href='index.html'>На главную</a></p></div>";
+                document.body.classList.add('loaded');
+            }
+        });
+    </script>
+</body>
+
+</html>

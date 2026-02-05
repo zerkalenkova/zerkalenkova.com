@@ -1,0 +1,346 @@
+/* =========================================
+   CASE HERO SECTION (Updated for Polish)
+   ========================================= */
+
+/* Main Container for the Split Layout */
+.layout-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: flex-start;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 120px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-color: #FFFFFF !important;
+}
+
+/* Left Column: Image */
+.layout-split .case-hero-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    filter: none !important;
+}
+
+/* Rosatom Specific Adjustment */
+/* "Hero image: move slightly up and left." */
+.rosatom-hero-adj {
+    margin-top: -40px !important;
+    margin-left: -30px !important;
+    max-width: calc(100% + 30px) !important;
+}
+
+/* Right Column: Content Wrapper */
+.layout-split .case-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    height: auto;
+    padding-top: 100px;
+    /* Pushed down to align optically */
+}
+
+/* Metadata Block - Reduced Size Globally */
+.layout-split .case-meta-grid,
+.layout-values .case-meta-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 12px;
+    row-gap: 8px;
+    margin-bottom: 40px;
+    font-family: 'Inter', sans-serif;
+    border-top: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.layout-split .case-meta-grid .meta-row {
+    display: contents;
+}
+
+/* Reduced size ~10-15% */
+.layout-split .case-meta-grid .meta-label,
+.layout-values .case-meta-grid .meta-label {
+    color: #B5B5B5;
+    font-size: 0.75rem;
+    /* Reduced from 13px */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.layout-split .case-meta-grid .meta-value,
+.layout-values .case-meta-grid .meta-value {
+    color: #000000;
+    font-size: 0.75rem;
+    /* Reduced from 13px */
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+/* Main Headline - Reduced Size & Tracking */
+.layout-split .title-xl,
+.layout-values .title-xl {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    /* Reduced max from 5rem */
+    font-weight: 600;
+    color: #000000;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    /* Tighter tracking */
+    margin: 0;
+    max-width: 800px;
+}
+
+/* 2. CONTENT SECTIONS (Below Hero) */
+.section-split-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    margin-bottom: 120px;
+}
+
+/* Images alignment */
+.section-split-content {
+    width: 100%;
+}
+
+/* Full Width Images inside content flow */
+.section-split-content img {
+    width: 100%;
+    max-width: 100%;
+    /* Force full width */
+    height: auto;
+    margin: 40px 0;
+    display: block;
+}
+
+/* 3. GALLERY GRID */
+.layout-split-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 120px;
+    width: 100%;
+}
+
+.layout-split-gallery img {
+    width: 100%;
+    max-width: 1300px;
+    height: auto;
+}
+
+.gallery-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    margin: 80px 0;
+}
+
+.gallery-grid-2col img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.section-split-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 40px;
+}
+
+.section-split-row h3 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: lowercase;
+    margin: 0;
+    letter-spacing: var(--tracking-tight);
+}
+
+.section-split-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #111;
+    max-width: 800px;
+    margin-bottom: 0;
+}
+
+.btn-live {
+    display: inline-block;
+    background: #f5f5f5;
+    color: #000;
+    padding: 12px 24px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .layout-split {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+        gap: 60px;
+        text-align: left;
+    }
+
+    .layout-split .case-header {
+        order: 2;
+        padding-top: 0;
+    }
+
+    .layout-split .case-hero-image {
+        max-width: 100%;
+        order: 1;
+        margin-left: 0 !important;
+        /* Reset Rosatom adj */
+        margin-top: 0 !important;
+    }
+
+    .section-split-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .layout-split-gallery {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .gallery-grid-2col {
+        grid-template-columns: 1fr !important;
+    }
+
+    .gallery-pair-row {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .layout-split-gallery img {
+        width: 100% !important;
+    }
+
+    .layout-split-gallery img {
+        width: 100% !important;
+    }
+
+    .rosatom-hero-adj {
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* FIX: Metadata Block on Mobile - Ensure 1 column flow or consistent grid */
+    /* "Format / Year ... stay in ONE column... match Rosatom" */
+    .layout-split .case-meta-grid,
+    .layout-values .case-meta-grid {
+        grid-template-columns: auto auto !important;
+        /* Keep Side-by-Side but ensure spacing */
+        /* If "not break into two columns" means "Don't Stack" (stay 1 row), then auto auto is correct. 
+           If it means "Don't split into 2 massive columns", that's layout-values grid. 
+           Rosatom is side-by-side. 
+           Let's ensure enough width. */
+        justify-content: start !important;
+    }
+
+    /* Ensure long values don't break the grid layout */
+    .layout-split .case-meta-grid .meta-value,
+    .layout-values .case-meta-grid .meta-value {
+        word-break: break-word;
+    }
+}
+
+/* --- VALUES LAYOUT (Right-aligned Meta) --- */
+.layout-values {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    align-items: start;
+    background-color: #FFFFFF;
+}
+
+.layout-values .values-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.layout-values .case-hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    filter: none;
+    margin-bottom: 40px;
+    /* Gap between Image and Meta */
+}
+
+/* Spacing logic for Values Main */
+.values-main .case-meta-grid {
+    margin-bottom: 40px;
+    /* Gap between Meta and Title */
+}
+
+.layout-values .title-xl {
+    /* Style handled above */
+    margin: 0;
+}
+
+.layout-values .values-meta-sidebar {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Meta Labels/Values handled above */
+
+.layout-values .meta-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 10px;
+    align-items: baseline;
+}
+
+@media (max-width: 900px) {
+    .layout-values {
+        grid-template-columns: 1fr;
+    }
+
+    .layout-values .values-meta-sidebar {
+        order: -1;
+        margin-bottom: 40px;
+        padding-top: 0;
+    }
+
+    .layout-values .title-xl {
+        font-size: 2.5rem;
+    }
+}

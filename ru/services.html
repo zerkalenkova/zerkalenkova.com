@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экспертиза | Лиза Зеркаленкова</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- SEO & Localization -->
+    <link rel="canonical" href="https://zerkalenkova.com/ru/services.html" />
+    <link rel="alternate" hreflang="en" href="https://zerkalenkova.com/services.html" />
+    <link rel="alternate" hreflang="ru" href="https://zerkalenkova.com/ru/services.html" />
+    <style>
+        .service-list {
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .service-item {
+            padding: 40px 0;
+            border-bottom: 1px solid #e5e5e5;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: baseline;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #111;
+        }
+
+        .service-desc {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+
+        @media (max-width: 768px) {
+            .service-item {
+                display: block;
+                /* Stack content */
+                margin-bottom: 40px;
+                padding-bottom: 40px;
+            }
+
+            .service-title {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+
+            .service-desc {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Лиза Зеркаленкова</a>
+        <nav>
+            <ul class="nav-links-desktop">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="index.html#work" class="nav-link">Проекты</a></li>
+                <li><a href="services.html" class="nav-link" style="opacity: 1;">Экспертиза</a></li>
+                <li><a href="about.html" class="nav-link">Обо мне</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+                <!-- Language Switcher Dynamic -->
+                <li class="lang-switch" style="margin-left: 10px; opacity: 1;">
+                    <a href="../services.html" id="lang-switch-link" class="nav-link" style="opacity: 0.6;">EN</a>
+                    <span style="opacity: 0.3;">|</span>
+                    <span style="font-weight: 600; cursor: default;">RU</span>
+                </li>
+            </ul>
+            <div class="menu-toggle">МЕНЮ</div>
+        </nav>
+    </header>
+
+    <main class="container" style="padding-top: 180px; min-height: 70vh; padding-bottom: 100px;">
+        <div style="max-width: 1200px;">
+            <h1 class="title-lg" style="margin-bottom: 5rem;">Специализация и фокус</h1>
+
+            <div class="service-list">
+
+                <div class="service-item">
+                    <h2 class="service-title">Упаковка смыслов и сторителлинг</h2>
+                    <p class="service-desc">Проектирование логики презентаций, где каждый слайд работает на итоговую
+                        цель.</p>
+                </div>
+
+                <div class="service-item">
+                    <h2 class="service-title">Визуализация данных и инфографика</h2>
+                    <p class="service-desc">Превращение сложных данных и цифр в понятные визуальные системы.</p>
+                </div>
+
+                <div class="service-item">
+                    <h2 class="service-title">Дизайн для выступлений</h2>
+                    <p class="service-desc">Создание статусных материалов для руководителей и крупных ведомств.</p>
+                </div>
+
+                <div class="service-item">
+                    <h2 class="service-title">Разработка презентационных шаблонов</h2>
+                    <p class="service-desc">Создание гибких мастер-слайдов для самостоятельной работы команд.</p>
+                </div>
+
+                <div class="service-item">
+                    <h2 class="service-title">Нейродизайн и генерация контента</h2>
+                    <p class="service-desc">Использование всего спектра ИИ-инструментов для создания уникального визуала
+                        под задачи проекта.</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-cta">
+            <h2 id="footer-cta-text">Ваши смыслы заслуживают сильного воплощения</h2>
+        </div>
+        <div class="footer-links">
+            <div class="footer-contacts-wrapper">
+                <a href="mailto:hello@zerkalenkova.com" class="contact-email" id="footer-email">
+                    <img src="../assets/images/mail-sharp.svg" alt="" style="width: 32px; margin-right: 12px;">
+                    hello@zerkalenkova.com
+                </a>
+                <a href="https://t.me/zzerkaliza" class="contact-telegram" target="_blank">
+                    <img src="../assets/images/telegram.svg" alt="" style="width: 32px; margin-right: 12px;">
+                    zzerkaliza
+                </a>
+            </div>
+            <div class="footer-copyright-wrapper">
+                <p>&copy; 2026 Лиза Зеркаленкова</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main-ru.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+
+</html>
