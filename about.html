@@ -21,9 +21,16 @@
         .grid-item {
             display: grid;
             grid-template-columns: 180px 1fr;
-            /* Adjusted for "Design & Layout" width */
+            /* Default for Skills */
             gap: 30px;
             margin-bottom: 48px;
+        }
+
+        /* Specific Override for Experience: 120px Column */
+        .grid-item.experience-layout {
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
+            /* Tighter gap requested indirectly by 'Years | Content' look? Or stick to 30px? Sticking to 20px matches previous request */
         }
 
         .grid-item .label-col {
@@ -40,6 +47,13 @@
             line-height: 1.6;
         }
 
+        /* Job Title Styling */
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
         .grid-item .content-col ul {
             padding-left: 20px;
             margin: 0;
@@ -52,7 +66,9 @@
         }
 
         @media (max-width: 768px) {
-            .grid-item {
+
+            .grid-item,
+            .grid-item.experience-layout {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
@@ -108,11 +124,10 @@
             <div class="about-content">
 
                 <!-- Item 1 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2018 — Present</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Project-Based Consultancy</strong>
-                        </div>
+                        <div class="job-title">Project-Based Consultancy</div>
                         <p style="margin: 0; color: #333;">
                             Alongside my primary roles, I lead design projects for major industrial corporations
                             (including Rosatom), innovation brands, and research initiatives. I deliver strategic visual
@@ -122,35 +137,56 @@
                 </div>
 
                 <!-- Item 2 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2024 — 2025</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Lead Designer</strong></div>
+                        <div class="job-title">Lead Designer</div>
                         <div style="color: #666; margin-bottom: 8px;">Federal Transport Authority</div>
-                        <p style="margin: 0;">Developed executive presentations and strategic reporting materials for
-                            federal infrastructure projects.</p>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Executive presentations</li>
+                            <li>Analytical reports</li>
+                            <li>Strategic communication materials</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2022 — 2026</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Lead Designer</strong></div>
+                        <div class="job-title">Lead Designer</div>
                         <div style="color: #666; margin-bottom: 8px;">Center for Sociological Research “14–35”</div>
-                        <p style="margin: 0;">Visualized large-scale research data and developed editorial layouts for
-                            social policy reports.</p>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Large-scale research visualization</li>
+                            <li>Event branding</li>
+                            <li>Editorial layouts</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Item 4 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2020 — 2022</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Communications Lead</strong></div>
+                        <div class="job-title">Communications Lead</div>
                         <div style="color: #666; margin-bottom: 8px;">Regional Public Relations Office</div>
-                        <p style="margin: 0;">Managed visual assets and communication programs for public sector
-                            initiatives.</p>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Public sector communication programs</li>
+                            <li>Multi-level campaign materials</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="grid-item experience-layout">
+                    <div class="label-col">2019 — 2020</div>
+                    <div class="content-col">
+                        <div class="job-title">SMM Manager</div>
+                        <div style="color: #666; margin-bottom: 8px;">Smorodina Agency</div>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Social media strategy</li>
+                            <li>Copywriting and digital assets</li>
+                        </ul>
                     </div>
                 </div>
 

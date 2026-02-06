@@ -254,24 +254,28 @@
     /* "Format / Year ... stay in ONE column... match Rosatom" */
     /* FIX: Metadata Block on Mobile */
     /* Use fixed width for labels as requested */
+    /* FIX: Metadata Block on Mobile */
     .layout-split .case-meta-grid,
     .layout-values .case-meta-grid {
-        grid-template-columns: 120px 1fr !important;
+        display: grid !important;
+        grid-template-columns: 110px 1fr !important;
         column-gap: 20px !important;
-        width: 100%;
+        row-gap: 12px !important;
+        align-items: start !important;
     }
 
-    /* Typography Fixes */
-    .layout-split .case-meta-grid .meta-value,
-    .layout-values .case-meta-grid .meta-value,
     .layout-split .case-meta-grid .meta-label,
     .layout-values .case-meta-grid .meta-label {
         word-break: normal !important;
-        hyphens: none !important;
-        overflow-wrap: normal !important;
-        /* Ensure wrapping happens at spaces */
+        white-space: nowrap !important;
         min-width: 0;
-        /* Enable flex shrinking if needed */
+    }
+
+    .layout-split .case-meta-grid .meta-value,
+    .layout-values .case-meta-grid .meta-value {
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        min-width: 0;
     }
 }
 

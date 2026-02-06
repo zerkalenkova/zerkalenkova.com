@@ -21,9 +21,15 @@
         .grid-item {
             display: grid;
             grid-template-columns: 180px 1fr;
-            /* Adjusted for width */
+            /* Default for Skills */
             gap: 30px;
             margin-bottom: 48px;
+        }
+
+        /* Specific Override for Experience: 120px Column */
+        .grid-item.experience-layout {
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
         }
 
         .grid-item .label-col {
@@ -40,6 +46,13 @@
             line-height: 1.6;
         }
 
+        /* Job Title Styling */
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
         .grid-item .content-col ul {
             padding-left: 20px;
             margin: 0;
@@ -52,7 +65,9 @@
         }
 
         @media (max-width: 768px) {
-            .grid-item {
+
+            .grid-item,
+            .grid-item.experience-layout {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
@@ -108,10 +123,10 @@
             <div class="about-content">
 
                 <!-- Item 1 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2018 — Наст. время</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Проектная работа</strong></div>
+                        <div class="job-title">Проектная работа</div>
                         <p style="margin: 0; color: #333;">
                             Помимо основных ролей, я веду дизайн-проекты для крупных корпораций, инновационных брендов и
                             исследовательских инициатив. Создаю стратегические материалы для отчетности, инвестиционных
@@ -121,10 +136,10 @@
                 </div>
 
                 <!-- Item 2 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2024 — 2025</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Ведущий дизайнер</strong></div>
+                        <div class="job-title">Ведущий дизайнер</div>
                         <div style="color: #666; margin-bottom: 8px;">Минтранс России</div>
                         <p style="margin: 0;">Создание презентаций для руководства и стратегических отчетов для
                             федеральных инфраструктурных проектов.</p>
@@ -132,10 +147,10 @@
                 </div>
 
                 <!-- Item 3 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2022 — 2026</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Ведущий дизайнер</strong></div>
+                        <div class="job-title">Ведущий дизайнер</div>
                         <div style="color: #666; margin-bottom: 8px;">Центр социологических исследований «14–35»</div>
                         <p style="margin: 0;">Визуализация масштабных социологических данных и верстка многостраничных
                             отчетов.</p>
@@ -143,21 +158,20 @@
                 </div>
 
                 <!-- Item 4 -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2020 — 2022</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Региональный SMM-специалист</strong>
-                        </div>
+                        <div class="job-title">Региональный SMM-специалист</div>
                         <div style="color: #666; margin-bottom: 8px;">«Единая Россия»</div>
                         <p style="margin: 0;">Работа с визуальным контентом и коммуникационными программами.</p>
                     </div>
                 </div>
 
                 <!-- Item 5 (Smorodina) -->
-                <div class="grid-item">
+                <div class="grid-item experience-layout">
                     <div class="label-col">2019 — 2020</div>
                     <div class="content-col">
-                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>SMM-специалист</strong></div>
+                        <div class="job-title">SMM-специалист</div>
                         <div style="color: #666; margin-bottom: 8px;">Агентство «Смородина»</div>
                         <p style="margin: 0;">Стратегия в социальных медиа, копирайтинг и создание цифровых материалов.
                         </p>
