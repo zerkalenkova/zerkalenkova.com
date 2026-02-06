@@ -141,6 +141,7 @@ const SITE_DATA = {
                 ["assets/images/values-8.png", "assets/images/values-9.png"]
             ]
         },
+        /*
         {
             id: "spirituality-values",
             layoutType: "split",
@@ -170,6 +171,7 @@ const SITE_DATA = {
                 "assets/images/Spirituality-6.png"
             ]
         },
+        */
     ],
 
     services: [
