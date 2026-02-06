@@ -253,10 +253,10 @@
     /* FIX: Metadata Block on Mobile - Ensure 1 column flow or consistent grid */
     /* "Format / Year ... stay in ONE column... match Rosatom" */
     /* FIX: Metadata Block on Mobile */
-    /* Use max-content for labels to prevent them from squashing values */
+    /* Use fixed width for labels as requested */
     .layout-split .case-meta-grid,
     .layout-values .case-meta-grid {
-        grid-template-columns: max-content 1fr !important;
+        grid-template-columns: 120px 1fr !important;
         column-gap: 20px !important;
         width: 100%;
     }

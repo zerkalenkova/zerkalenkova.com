@@ -17,7 +17,52 @@
             margin-bottom: 80px;
         }
 
-        /* ... existing styles ... */
+        /* Responsive Grid Layout (Experience, Education, Skills) */
+        .grid-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            /* Adjusted for "Design & Layout" width */
+            gap: 30px;
+            margin-bottom: 48px;
+        }
+
+        .grid-item .label-col {
+            color: #888;
+            font-size: 0.95rem;
+            /* Typography Fixes */
+            hyphens: none !important;
+            word-break: normal !important;
+            line-height: 1.5;
+        }
+
+        .grid-item .content-col {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .grid-item .content-col ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        /* Bold Headers in Skills */
+        .skill-header {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-item {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .grid-item .label-col {
+                width: 100%;
+                margin-bottom: 4px;
+            }
+        }
     </style>
 </head>
 
@@ -38,7 +83,7 @@
                     <a href="ru/about.html" class="nav-link" style="opacity: 0.6;">RU</a>
                 </li>
             </ul>
-            <div class="menu-toggle">Menu</div>
+            <div class="menu-toggle">MENU</div>
         </nav>
     </header>
 
@@ -46,56 +91,66 @@
 
         <!-- HERO -->
         <section class="about-hero" style="margin-bottom: 100px; max-width: 1000px;">
-            <p class="text-meta">Executive & Research Presentation Designer</p>
+            <p class="text-meta">Strategic Design & Visual Narrative</p>
             <h1 class="title-lg" style="margin-bottom: 2rem;">Liza Zerkalenkova</h1>
             <p class="subtitle" style="font-size: 1.3rem; line-height: 1.6; max-width: 800px; color: #333;">
-                I work on high-stakes presentations, analytical reports, and institutional communication projects for
-                public organizations, research centers, and non-profits. My focus is data-driven storytelling,
-                executive-level decks, and editorial systems for complex subjects.
+                I specialize in high-stakes presentations, analytical reports, and institutional communication. My focus
+                is data-driven storytelling and building visual systems for complex subjects. I help organizations and
+                research centers transform vast information into clear, impactful visual narratives.
             </p>
         </section>
 
         <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 80px;">
 
-        <!-- EXPERIECE -->
+        <!-- EXPERIENCE -->
         <section class="about-section about-grid">
             <div class="about-label">Experience</div>
             <div class="about-content">
 
-                <div class="experience-item">
-                    <div class="year">2024 — 2025</div>
-                    <div>
-                        <div class="role">Lead Designer</div>
-                        <span class="company">Federal Transport Authority</span>
-                        <p class="desc">Executive presentations, analytical reports, and strategic communication
-                            materials.</p>
+                <!-- Item 1 -->
+                <div class="grid-item">
+                    <div class="label-col">2018 — Present</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Project-Based Consultancy</strong>
+                        </div>
+                        <p style="margin: 0; color: #333;">
+                            Alongside my primary roles, I lead design projects for major industrial corporations
+                            (including Rosatom), innovation brands, and research initiatives. I deliver strategic visual
+                            assets for ESG reporting, investment decks, and corporate communications.
+                        </p>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="year">2022 — 2026</div>
-                    <div>
-                        <div class="role">Lead Designer</div>
-                        <span class="company">Center for Sociological Research “14–35”</span>
-                        <p class="desc">Large-scale research visualization, event branding, and editorial layouts.</p>
+                <!-- Item 2 -->
+                <div class="grid-item">
+                    <div class="label-col">2024 — 2025</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Lead Designer</strong></div>
+                        <div style="color: #666; margin-bottom: 8px;">Federal Transport Authority</div>
+                        <p style="margin: 0;">Developed executive presentations and strategic reporting materials for
+                            federal infrastructure projects.</p>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="year">2020 — 2022</div>
-                    <div>
-                        <div class="role">Content Lead</div>
-                        <span class="company">Regional Public Communications Office</span>
-                        <p class="desc">Public sector communication programs and multi-level campaign materials.</p>
+                <!-- Item 3 -->
+                <div class="grid-item">
+                    <div class="label-col">2022 — 2026</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Lead Designer</strong></div>
+                        <div style="color: #666; margin-bottom: 8px;">Center for Sociological Research “14–35”</div>
+                        <p style="margin: 0;">Visualized large-scale research data and developed editorial layouts for
+                            social policy reports.</p>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="year">2019 — 2020</div>
-                    <div>
-                        <div class="role">SMM Manager</div>
-                        <span class="company">Smorodina Agency</span>
-                        <p class="desc">Social media strategy, copywriting, and digital assets.</p>
+                <!-- Item 4 -->
+                <div class="grid-item">
+                    <div class="label-col">2020 — 2022</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Communications Lead</strong></div>
+                        <div style="color: #666; margin-bottom: 8px;">Regional Public Relations Office</div>
+                        <p style="margin: 0;">Managed visual assets and communication programs for public sector
+                            initiatives.</p>
                     </div>
                 </div>
 
@@ -109,28 +164,19 @@
             <div class="about-label">Education</div>
             <div class="about-content">
 
-                <div class="education-item">
-                    <div class="year">2023 — 2025</div>
-                    <div>
-                        <div class="role">MA in Advertising & Public Relations</div>
-                        <p class="desc">North-Caucasus Federal University</p>
-                    </div>
+                <div class="grid-item">
+                    <div class="label-col">MA in Advertising & Public Relations</div>
+                    <div class="content-col">North-Caucasus Federal University</div>
                 </div>
 
-                <div class="education-item">
-                    <div class="year">2019 — 2023</div>
-                    <div>
-                        <div class="role">BA in Advertising & Public Relations</div>
-                        <p class="desc">North-Caucasus Federal University</p>
-                    </div>
+                <div class="grid-item">
+                    <div class="label-col">BA in Advertising & Public Relations</div>
+                    <div class="content-col">North-Caucasus Federal University</div>
                 </div>
 
-                <div class="education-item">
-                    <div class="year">2019 — 2024</div>
-                    <div>
-                        <div class="role">BA in Civil Law</div>
-                        <p class="desc">Moscow University of Humanities and Economics</p>
-                    </div>
+                <div class="grid-item">
+                    <div class="label-col">BA in Civil Law</div>
+                    <div class="content-col">Moscow University of Humanities and Economics</div>
                 </div>
 
             </div>
@@ -140,42 +186,45 @@
 
         <!-- SKILLS -->
         <section class="about-section about-grid">
-            <div class="about-label">Skills</div>
+            <div class="about-label">Technical Stack & Tools</div>
             <div class="about-content">
 
-                <div style="margin-bottom: 40px;">
-                    <h3
-                        style="font-size: 1rem; margin-bottom: 15px; color: #888; text-transform: uppercase; font-weight: 500; letter-spacing: 0.05em;">
-                        Capabilities</h3>
-                    <div class="skills-list">
-                        <div class="skill-tag">Presentation Design & Data Visualization</div>
-                        <div class="skill-tag">Editorial Layouts & Reports</div>
-                        <div class="skill-tag">Brand System Adaptation</div>
-                        <div class="skill-tag">Information Architecture</div>
-                        <div class="skill-tag">Public Communication Design</div>
-                        <div class="skill-tag">Motion Design Basics</div>
+                <!-- List Item 1 -->
+                <div class="grid-item">
+                    <div class="label-col">Design & Layout</div>
+                    <div class="content-col">
+                        Figma (layouts, components, auto-layouts), Adobe InDesign, Illustrator, CorelDRAW (multi-page &
+                        vector).
                     </div>
                 </div>
 
-                <div>
-                    <h3
-                        style="font-size: 1rem; margin-bottom: 15px; color: #888; text-transform: uppercase; font-weight: 500; letter-spacing: 0.05em;">
-                        Software</h3>
-                    <div class="skills-list">
-                        <div class="skill-tag">Figma</div>
-                        <div class="skill-tag">PowerPoint</div>
-                        <div class="skill-tag">Adobe InDesign</div>
-                        <div class="skill-tag">Illustrator</div>
-                        <div class="skill-tag">Photoshop</div>
-                        <div class="skill-tag">Procreate</div>
-                        <div class="skill-tag">CorelDRAW</div>
-                        <div class="skill-tag">AI-assisted workflows</div>
+                <!-- List Item 2 -->
+                <div class="grid-item">
+                    <div class="label-col">Raster & Creative</div>
+                    <div class="content-col">
+                        Hand-drawing (analog/digital), Adobe Photoshop, Procreate (sketching & visual assets).
+                    </div>
+                </div>
+
+                <!-- List Item 3 -->
+                <div class="grid-item">
+                    <div class="label-col">Presentations</div>
+                    <div class="content-col">
+                        Figma, PowerPoint, Google Slides (clean decks & template systems).
+                    </div>
+                </div>
+
+                <!-- List Item 4 -->
+                <div class="grid-item">
+                    <div class="label-col">AI & Modern Tools</div>
+                    <div class="content-col">
+                        Generative visuals (Midjourney, Firefly, Nano Banana, etc.), Content & Structure (Claude,
+                        ChatGPT, etc.), Productivity (Antigravity & AI assistants).
                     </div>
                 </div>
 
             </div>
         </section>
-
 
     </main>
 

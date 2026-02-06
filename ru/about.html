@@ -17,24 +17,68 @@
             margin-bottom: 80px;
         }
 
-        /* ... existing styles ... */
+        /* Responsive Grid Layout (Experience, Education, Skills) */
+        .grid-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            /* Adjusted for width */
+            gap: 30px;
+            margin-bottom: 48px;
+        }
+
+        .grid-item .label-col {
+            color: #888;
+            font-size: 0.95rem;
+            /* Typography Fixes */
+            hyphens: none !important;
+            word-break: normal !important;
+            line-height: 1.5;
+        }
+
+        .grid-item .content-col {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .grid-item .content-col ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        /* Bold Headers in Skills */
+        .skill-header {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-item {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .grid-item .label-col {
+                width: 100%;
+                margin-bottom: 4px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <a href="index.html" class="logo">Лиза Зеркаленкова</a>
+        <a href="index.html" class="logo">Liza Zerkalenkova</a>
         <nav>
             <ul class="nav-links-desktop">
-                <li><a href="index.html" class="nav-link">Главная</a></li>
-                <li><a href="index.html#work" class="nav-link">Проекты</a></li>
-                <li><a href="services.html" class="nav-link">Экспертиза</a></li>
-                <li><a href="about.html" class="nav-link" style="opacity: 1;">Обо мне</a></li>
-                <li><a href="#contact" class="nav-link">Контакты</a></li>
-                <!-- Language Switcher Dynamic -->
+                <li><a href="index.html" class="nav-link">Work</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <!-- Language Switcher -->
                 <li class="lang-switch" style="margin-left: 10px; opacity: 1;">
                     <a href="../about.html" class="nav-link" style="opacity: 0.6;">EN</a>
-                    <span style="opacity: 0.3;">|</span>
+                    <span>|</span>
                     <span style="font-weight: 600; cursor: default;">RU</span>
                 </li>
             </ul>
@@ -46,12 +90,13 @@
 
         <!-- HERO -->
         <section class="about-hero" style="margin-bottom: 100px; max-width: 1000px;">
-            <p class="text-meta">Дизайнер визуальных коммуникаций и данных</p>
-
+            <p class="text-meta">Strategic Design & Visual Narrative</p>
+            <h1 class="title-lg" style="margin-bottom: 2rem;">Лиза Зеркаленкова</h1>
             <p class="subtitle" style="font-size: 1.3rem; line-height: 1.6; max-width: 800px; color: #333;">
-                Более 6 лет я работаю на стыке аналитики и дизайна. Моя задача — создавать визуальный порядок и
-                проявлять ключевые смыслы в контенте любой сложности. Специализируюсь на стратегических презентациях
-                управленческого уровня и визуализации отчетов и исследований.
+                Я специализируюсь на создании презентаций для руководителей, аналитических отчетов и институциональных
+                коммуникаций. Мой фокус — сторителлинг на основе данных и создание визуальных систем для сложных тем. Я
+                помогаю организациям и исследователям превращать большие объемы информации в понятные и сильные
+                визуальные истории.
             </p>
         </section>
 
@@ -62,41 +107,60 @@
             <div class="about-label">Опыт работы</div>
             <div class="about-content">
 
-                <div class="experience-item">
-                    <div class="year">2024 — 2025</div>
-                    <div>
-                        <div class="role">Дизайнер</div>
-                        <span class="company">Минтранс России</span>
-                        <p class="desc">Презентации для руководства, аналитические отчеты и материалы стратегической
-                            коммуникации.</p>
+                <!-- Item 1 -->
+                <div class="grid-item">
+                    <div class="label-col">2018 — Наст. время</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Проектная работа</strong></div>
+                        <p style="margin: 0; color: #333;">
+                            Помимо основных ролей, я веду дизайн-проекты для крупных корпораций, инновационных брендов и
+                            исследовательских инициатив. Создаю стратегические материалы для отчетности, инвестиционных
+                            презентаций и корпоративных коммуникаций.
+                        </p>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="year">2022 — 2026</div>
-                    <div>
-                        <div class="role">Дизайнер</div>
-                        <span class="company">Центр социологических исследований «14–35»</span>
-                        <p class="desc">Визуализация исследований, брендинг мероприятий и редакционная верстка.</p>
+                <!-- Item 2 -->
+                <div class="grid-item">
+                    <div class="label-col">2024 — 2025</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Ведущий дизайнер</strong></div>
+                        <div style="color: #666; margin-bottom: 8px;">Минтранс России</div>
+                        <p style="margin: 0;">Создание презентаций для руководства и стратегических отчетов для
+                            федеральных инфраструктурных проектов.</p>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="year">2020 — 2022</div>
-                    <div>
-                        <div class="role">Региональный SMM-менеджер</div>
-                        <span class="company">Региональный офис партии «Единая Россия»</span>
-                        <p class="desc">Программы коммуникаций в государственном секторе и многоуровневые агитационные
-                            материалы.</p>
+                <!-- Item 3 -->
+                <div class="grid-item">
+                    <div class="label-col">2022 — 2026</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Ведущий дизайнер</strong></div>
+                        <div style="color: #666; margin-bottom: 8px;">Центр социологических исследований «14–35»</div>
+                        <p style="margin: 0;">Визуализация масштабных социологических данных и верстка многостраничных
+                            отчетов.</p>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="year">2019 — 2020</div>
-                    <div>
-                        <div class="role">SMM-менеджер</div>
-                        <span class="company">Агентство «Смородина»</span>
-                        <p class="desc">Стратегия в социальных медиа, копирайтинг и цифровые материалы.</p>
+                <!-- Item 4 -->
+                <div class="grid-item">
+                    <div class="label-col">2020 — 2022</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>Региональный SMM-специалист</strong>
+                        </div>
+                        <div style="color: #666; margin-bottom: 8px;">«Единая Россия»</div>
+                        <p style="margin: 0;">Работа с визуальным контентом и коммуникационными программами.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 (Smorodina) -->
+                <div class="grid-item">
+                    <div class="label-col">2019 — 2020</div>
+                    <div class="content-col">
+                        <div style="font-size: 1.1rem; margin-bottom: 4px;"><strong>SMM-специалист</strong></div>
+                        <div style="color: #666; margin-bottom: 8px;">Агентство «Смородина»</div>
+                        <p style="margin: 0;">Стратегия в социальных медиа, копирайтинг и создание цифровых материалов.
+                        </p>
                     </div>
                 </div>
 
@@ -110,28 +174,19 @@
             <div class="about-label">Образование</div>
             <div class="about-content">
 
-                <div class="education-item">
-                    <div class="year">2023 — 2025</div>
-                    <div>
-                        <div class="role">Магистратура: Реклама и связи с общественностью</div>
-                        <p class="desc">Северо-Кавказский федеральный университет</p>
-                    </div>
+                <div class="grid-item">
+                    <div class="label-col">Магистр: Реклама и связи с общественностью</div>
+                    <div class="content-col">СКФУ</div>
                 </div>
 
-                <div class="education-item">
-                    <div class="year">2019 — 2023</div>
-                    <div>
-                        <div class="role">Бакалавриат: Реклама и связи с общественностью</div>
-                        <p class="desc">Северо-Кавказский федеральный университет</p>
-                    </div>
+                <div class="grid-item">
+                    <div class="label-col">Бакалавр: Реклама и связи с общественностью</div>
+                    <div class="content-col">СКФУ</div>
                 </div>
 
-                <div class="education-item">
-                    <div class="year">2019 — 2024</div>
-                    <div>
-                        <div class="role">Бакалавриат: Гражданское право</div>
-                        <p class="desc">Московский гуманитарно-экономический университет</p>
-                    </div>
+                <div class="grid-item">
+                    <div class="label-col">Бакалавр: Гражданское право</div>
+                    <div class="content-col">МГЭУ</div>
                 </div>
 
             </div>
@@ -141,36 +196,41 @@
 
         <!-- SKILLS -->
         <section class="about-section about-grid">
-            <div class="about-label">Навыки</div>
+            <div class="about-label">Компетенции</div>
             <div class="about-content">
 
-                <div style="margin-bottom: 40px;">
-                    <h3
-                        style="font-size: 1rem; margin-bottom: 15px; color: #888; text-transform: uppercase; font-weight: 500; letter-spacing: 0.05em;">
-                        Компетенции</h3>
-                    <div class="skills-list">
-                        <div class="skill-tag">Разработка айдентики и бренд-систем</div>
-                        <div class="skill-tag">Дизайн презентаций и визуализация данных</div>
-                        <div class="skill-tag">Информационная архитектура и верстка отчетов</div>
-                        <div class="skill-tag">Авторская иллюстрация и графические образы</div>
-                        <div class="skill-tag">Проектирование общественных коммуникаций</div>
-                        <div class="skill-tag">Контент для цифровых сред и соцсетей</div>
+                <!-- List Item 1 -->
+                <div class="grid-item">
+                    <div class="label-col">Дизайн и верстка</div>
+                    <div class="content-col">
+                        Figma (макеты, компоненты, автолейауты), Adobe InDesign, Illustrator, CorelDRAW (многостраничная
+                        верстка и работа с вектором).
                     </div>
                 </div>
 
-                <div>
-                    <h3
-                        style="font-size: 1rem; margin-bottom: 15px; color: #888; text-transform: uppercase; font-weight: 500; letter-spacing: 0.05em;">
-                        Программы</h3>
-                    <div class="skills-list">
-                        <div class="skill-tag">Figma</div>
-                        <div class="skill-tag">PowerPoint</div>
-                        <div class="skill-tag">Adobe InDesign</div>
-                        <div class="skill-tag">Illustrator</div>
-                        <div class="skill-tag">Photoshop</div>
-                        <div class="skill-tag">Procreate</div>
-                        <div class="skill-tag">CorelDRAW</div>
-                        <div class="skill-tag">Работа с ИИ</div>
+                <!-- List Item 2 -->
+                <div class="grid-item">
+                    <div class="label-col">Растр и креатив</div>
+                    <div class="content-col">
+                        Рисование от руки (аналоговое/цифровое), Adobe Photoshop, Procreate (скетчинг и создание
+                        визуальных элементов).
+                    </div>
+                </div>
+
+                <!-- List Item 3 -->
+                <div class="grid-item">
+                    <div class="label-col">Презентации</div>
+                    <div class="content-col">
+                        Figma, PowerPoint, Google Slides (аккуратные слайды и системы шаблонов).
+                    </div>
+                </div>
+
+                <!-- List Item 4 -->
+                <div class="grid-item">
+                    <div class="label-col">ИИ и современные инструменты</div>
+                    <div class="content-col">
+                        Генерация визуала (Midjourney, Firefly, Nano Banana и т.п.), Контент и структура (Claude,
+                        ChatGPT и т.п.), Продуктивность (Antigravity и ИИ-помощники).
                     </div>
                 </div>
 
