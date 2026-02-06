@@ -252,21 +252,26 @@
 
     /* FIX: Metadata Block on Mobile - Ensure 1 column flow or consistent grid */
     /* "Format / Year ... stay in ONE column... match Rosatom" */
+    /* FIX: Metadata Block on Mobile */
+    /* Use max-content for labels to prevent them from squashing values */
     .layout-split .case-meta-grid,
     .layout-values .case-meta-grid {
-        grid-template-columns: auto auto !important;
-        /* Keep Side-by-Side but ensure spacing */
-        /* If "not break into two columns" means "Don't Stack" (stay 1 row), then auto auto is correct. 
-           If it means "Don't split into 2 massive columns", that's layout-values grid. 
-           Rosatom is side-by-side. 
-           Let's ensure enough width. */
-        justify-content: start !important;
+        grid-template-columns: max-content 1fr !important;
+        column-gap: 20px !important;
+        width: 100%;
     }
 
-    /* Ensure long values don't break the grid layout */
+    /* Typography Fixes */
     .layout-split .case-meta-grid .meta-value,
-    .layout-values .case-meta-grid .meta-value {
-        word-break: break-word;
+    .layout-values .case-meta-grid .meta-value,
+    .layout-split .case-meta-grid .meta-label,
+    .layout-values .case-meta-grid .meta-label {
+        word-break: normal !important;
+        hyphens: none !important;
+        overflow-wrap: normal !important;
+        /* Ensure wrapping happens at spaces */
+        min-width: 0;
+        /* Enable flex shrinking if needed */
     }
 }
 
