@@ -26,11 +26,11 @@
             margin-bottom: 48px;
         }
 
-        /* Specific Override for Experience: 120px Column */
+        /* Specific Override for Experience: 140px Column, 40px Gap */
         .grid-item.experience-layout {
-            grid-template-columns: 120px 1fr;
-            gap: 20px;
-            /* Tighter gap requested indirectly by 'Years | Content' look? Or stick to 30px? Sticking to 20px matches previous request */
+            grid-template-columns: 140px 1fr;
+            gap: 40px;
+            margin-bottom: 48px;
         }
 
         .grid-item .label-col {
@@ -49,14 +49,28 @@
 
         /* Job Title Styling */
         .job-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            /* Increased size */
             font-weight: 700;
+            display: block;
+            /* Ensure new line */
             margin-bottom: 4px;
+        }
+
+        .org-name {
+            display: block;
+            color: #666;
+            margin-bottom: 12px;
         }
 
         .grid-item .content-col ul {
             padding-left: 20px;
             margin: 0;
+            margin-top: 8px;
+        }
+
+        .grid-item .content-col li {
+            margin-bottom: 4px;
         }
 
         /* Bold Headers in Skills */
@@ -127,12 +141,13 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2018 — Present</div>
                     <div class="content-col">
-                        <div class="job-title">Project-Based Consultancy</div>
-                        <p style="margin: 0; color: #333;">
-                            Alongside my primary roles, I lead design projects for major industrial corporations
-                            (including Rosatom), innovation brands, and research initiatives. I deliver strategic visual
-                            assets for ESG reporting, investment decks, and corporate communications.
-                        </p>
+                        <span class="job-title">Project-Based Consultancy</span>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Lead design projects for major industrial corporations (including Rosatom), innovation
+                                brands, and research initiatives.</li>
+                            <li>Deliver strategic visual assets for ESG reporting, investment decks, and corporate
+                                communications.</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -140,8 +155,8 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2024 — 2025</div>
                     <div class="content-col">
-                        <div class="job-title">Lead Designer</div>
-                        <div style="color: #666; margin-bottom: 8px;">Federal Transport Authority</div>
+                        <span class="job-title">Lead Designer</span>
+                        <span class="org-name">Federal Transport Authority</span>
                         <ul style="padding-left: 20px; margin: 0;">
                             <li>Executive presentations</li>
                             <li>Analytical reports</li>
@@ -154,8 +169,8 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2022 — 2026</div>
                     <div class="content-col">
-                        <div class="job-title">Lead Designer</div>
-                        <div style="color: #666; margin-bottom: 8px;">Center for Sociological Research “14–35”</div>
+                        <span class="job-title">Lead Designer</span>
+                        <span class="org-name">Center for Sociological Research “14–35”</span>
                         <ul style="padding-left: 20px; margin: 0;">
                             <li>Large-scale research visualization</li>
                             <li>Event branding</li>
@@ -168,8 +183,8 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2020 — 2022</div>
                     <div class="content-col">
-                        <div class="job-title">Communications Lead</div>
-                        <div style="color: #666; margin-bottom: 8px;">Regional Public Relations Office</div>
+                        <span class="job-title">Communications Lead</span>
+                        <span class="org-name">Regional Public Relations Office</span>
                         <ul style="padding-left: 20px; margin: 0;">
                             <li>Public sector communication programs</li>
                             <li>Multi-level campaign materials</li>
@@ -181,8 +196,8 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2019 — 2020</div>
                     <div class="content-col">
-                        <div class="job-title">SMM Manager</div>
-                        <div style="color: #666; margin-bottom: 8px;">Smorodina Agency</div>
+                        <span class="job-title">SMM Manager</span>
+                        <span class="org-name">Smorodina Agency</span>
                         <ul style="padding-left: 20px; margin: 0;">
                             <li>Social media strategy</li>
                             <li>Copywriting and digital assets</li>

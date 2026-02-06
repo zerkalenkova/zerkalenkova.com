@@ -26,10 +26,11 @@
             margin-bottom: 48px;
         }
 
-        /* Specific Override for Experience: 120px Column */
+        /* Specific Override for Experience: 140px Column, 40px Gap */
         .grid-item.experience-layout {
-            grid-template-columns: 120px 1fr;
-            gap: 20px;
+            grid-template-columns: 140px 1fr;
+            gap: 40px;
+            margin-bottom: 48px;
         }
 
         .grid-item .label-col {
@@ -48,14 +49,28 @@
 
         /* Job Title Styling */
         .job-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            /* Increased size */
             font-weight: 700;
+            display: block;
+            /* Ensure new line */
             margin-bottom: 4px;
+        }
+
+        .org-name {
+            display: block;
+            color: #666;
+            margin-bottom: 12px;
         }
 
         .grid-item .content-col ul {
             padding-left: 20px;
             margin: 0;
+            margin-top: 8px;
+        }
+
+        .grid-item .content-col li {
+            margin-bottom: 4px;
         }
 
         /* Bold Headers in Skills */
@@ -126,12 +141,13 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2018 — Наст. время</div>
                     <div class="content-col">
-                        <div class="job-title">Проектная работа</div>
-                        <p style="margin: 0; color: #333;">
-                            Помимо основных ролей, я веду дизайн-проекты для крупных корпораций, инновационных брендов и
-                            исследовательских инициатив. Создаю стратегические материалы для отчетности, инвестиционных
-                            презентаций и корпоративных коммуникаций.
-                        </p>
+                        <span class="job-title">Проектная работа</span>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Веду дизайн-проекты для крупных корпораций (включая Росатом), инновационных брендов и
+                                исследовательских инициатив.</li>
+                            <li>Создаю стратегические материалы для отчетности, инвестиционных презентаций и
+                                корпоративных коммуникаций.</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -139,10 +155,13 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2024 — 2025</div>
                     <div class="content-col">
-                        <div class="job-title">Ведущий дизайнер</div>
-                        <div style="color: #666; margin-bottom: 8px;">Минтранс России</div>
-                        <p style="margin: 0;">Создание презентаций для руководства и стратегических отчетов для
-                            федеральных инфраструктурных проектов.</p>
+                        <span class="job-title">Ведущий дизайнер</span>
+                        <span class="org-name">Минтранс России</span>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Создание презентаций для руководства</li>
+                            <li>Верстка стратегических отчетов</li>
+                            <li>Визуализация федеральных инфраструктурных проектов</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -150,10 +169,13 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2022 — 2026</div>
                     <div class="content-col">
-                        <div class="job-title">Ведущий дизайнер</div>
-                        <div style="color: #666; margin-bottom: 8px;">Центр социологических исследований «14–35»</div>
-                        <p style="margin: 0;">Визуализация масштабных социологических данных и верстка многостраничных
-                            отчетов.</p>
+                        <span class="job-title">Ведущий дизайнер</span>
+                        <span class="org-name">Центр социологических исследований «14–35»</span>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Визуализация масштабных социологических данных</li>
+                            <li>Верстка многостраничных отчетов</li>
+                            <li>Брендинг мероприятий</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -161,9 +183,12 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2020 — 2022</div>
                     <div class="content-col">
-                        <div class="job-title">Региональный SMM-специалист</div>
-                        <div style="color: #666; margin-bottom: 8px;">«Единая Россия»</div>
-                        <p style="margin: 0;">Работа с визуальным контентом и коммуникационными программами.</p>
+                        <span class="job-title">Региональный SMM-специалист</span>
+                        <span class="org-name">«Единая Россия»</span>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Работа с визуальным контентом</li>
+                            <li>Запуск коммуникационных программ</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -171,10 +196,13 @@
                 <div class="grid-item experience-layout">
                     <div class="label-col">2019 — 2020</div>
                     <div class="content-col">
-                        <div class="job-title">SMM-специалист</div>
-                        <div style="color: #666; margin-bottom: 8px;">Агентство «Смородина»</div>
-                        <p style="margin: 0;">Стратегия в социальных медиа, копирайтинг и создание цифровых материалов.
-                        </p>
+                        <span class="job-title">SMM-специалист</span>
+                        <span class="org-name">Агентство «Смородина»</span>
+                        <ul style="padding-left: 20px; margin: 0;">
+                            <li>Стратегия в социальных медиа</li>
+                            <li>Копирайтинг</li>
+                            <li>Создание цифровых материалов</li>
+                        </ul>
                     </div>
                 </div>
 
