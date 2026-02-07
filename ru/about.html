@@ -7,12 +7,45 @@
     <title>Обо мне | Лиза Зеркаленкова</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- PDF Generation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <!-- SEO & Localization -->
     <link rel="canonical" href="https://zerkalenkova.com/ru/about.html" />
     <link rel="alternate" hreflang="en" href="https://zerkalenkova.com/about.html" />
     <link rel="alternate" hreflang="ru" href="https://zerkalenkova.com/ru/about.html" />
     <style>
+        /* Download CV Button */
+        .cv-download-section {
+            text-align: center;
+            margin: 60px 0 80px 0;
+        }
+
+        .btn-download-cv {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-download-cv:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Hidden CV Container for PDF Generation */
+        #cv-pdf-content {
+            display: none;
+        }
+
         .about-section {
             margin-bottom: 80px;
         }
@@ -302,6 +335,33 @@
             </div>
         </section>
 
+        <!-- DOWNLOAD CV BUTTON -->
+        <div class="cv-download-section">
+            <button class="btn-download-cv" onclick="generateCV()">Скачать CV (PDF)</button>
+        </div>
+
+        <!-- Hidden CV Content for PDF Generation -->
+        <div id="cv-pdf-content">
+            <div
+                style="font-family: 'Inter', sans-serif; padding: 50px 60px; max-width: 800px; margin: auto; color: #1a1a1a; line-height: 1.5;">
+                <h1
+                    style="font-size: 28pt; margin: 0; text-transform: uppercase; letter-spacing: -1px; font-weight: 800;">
+                    Лиза Зеркаленкова</h1>
+                <div style="font-size: 13pt; font-weight: 500; color: #555; margin: 10px 0 20px 0;">Стратегический
+                    дизайн и визуальные нарративы</div>
+                <div style="font-size: 9pt; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px;">
+                    <b>Портфолио:</b> <a href="https://zerkalenkova.com"
+                        style="color: #000; font-weight: 800;">zerkalenkova.com</a> |
+                    <b>Email:</b> <a href="mailto:hello@zerkalenkova.com"
+                        style="color: #000; font-weight: 800;">hello@zerkalenkova.com</a> |
+                    <b>TG:</b> @zzerkaliza
+                </div>
+                <div id="cv-experience-content"></div>
+                <div id="cv-skills-content"></div>
+                <div id="cv-education-content"></div>
+            </div>
+        </div>
+
 
     </main>
 
@@ -327,8 +387,81 @@
     </footer>
 
     <script src="../assets/js/main-ru.js"></script>
+
+    <!-- CV PDF Generation Script -->
     <script>
-        // Simple fade in
+        function generateCV() {
+            const cvContainer = document.getElementById('cv-pdf-content');
+            const expContent = document.getElementById('cv-experience-content');
+            const skillsContent = document.getElementById('cv-skills-content');
+            const eduContent = document.getElementById('cv-education-content');
+
+            expContent.innerHTML = '';
+            skillsContent.innerHTML = '';
+            eduContent.innerHTML = '';
+
+            // Experience Section
+            const experienceItems = document.querySelectorAll('.about-section .about-content .grid-item.experience-layout');
+            let expHTML = '<h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Опыт работы</h3>';
+            experienceItems.forEach(item => {
+                const date = item.querySelector('.label-col')?.textContent || '';
+                const title = item.querySelector('.job-title')?.textContent || '';
+                const org = item.querySelector('.org-name')?.textContent || '';
+                const bullets = item.querySelectorAll('li');
+                expHTML += `<div style="display: grid; grid-template-columns: 130px 1fr; gap: 25px; margin-bottom: 18px;">`;
+                expHTML += `<div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600; padding-top: 4px;">${date}</div>`;
+                expHTML += `<div style="font-size: 10pt;">`;
+                expHTML += `<b style="font-size: 11pt; display: block; margin-bottom: 2px;">${title}</b>`;
+                if (org) expHTML += `<div style="font-size: 9.5pt; color: #666; font-weight: 500; margin-bottom: 4px;">${org}</div>`;
+                if (bullets.length) {
+                    expHTML += '<ul style="margin: 4px 0 0 16px; padding: 0;">';
+                    bullets.forEach(li => expHTML += `<li style="margin-bottom: 2px; list-style-type: square;">${li.innerHTML}</li>`);
+                    expHTML += '</ul>';
+                }
+                expHTML += '</div></div>';
+            });
+            expContent.innerHTML = expHTML;
+
+            // Skills Section
+            const skillsItems = document.querySelectorAll('.about-section:last-of-type .grid-item:not(.experience-layout)');
+            let skillsHTML = '<h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Инструменты</h3>';
+            skillsItems.forEach(item => {
+                const label = item.querySelector('.label-col')?.textContent || '';
+                const content = item.querySelector('.content-col')?.textContent?.trim() || '';
+                skillsHTML += `<div style="display: grid; grid-template-columns: 130px 1fr; gap: 25px; margin-bottom: 12px;">`;
+                skillsHTML += `<div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600;">${label}</div>`;
+                skillsHTML += `<div style="font-size: 10pt;">${content}</div>`;
+                skillsHTML += '</div>';
+            });
+            skillsContent.innerHTML = skillsHTML;
+
+            // Education
+            eduContent.innerHTML = `
+                <h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Образование</h3>
+                <div style="display: grid; grid-template-columns: 130px 1fr; gap: 25px; margin-bottom: 12px;">
+                    <div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600;">Академическое</div>
+                    <div style="font-size: 10pt;">
+                        <b>Магистратура и бакалавриат по рекламе и PR</b> | СКФУ<br>
+                        <b>Бакалавриат по гражданскому праву</b> | МГУЭ
+                    </div>
+                </div>
+            `;
+
+            cvContainer.style.display = 'block';
+            const opt = {
+                margin: 0,
+                filename: 'CV_Liza_Zerkalenkova_RU.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(cvContainer).save().then(() => {
+                cvContainer.style.display = 'none';
+            });
+        }
+    </script>
+
+    <script>
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
         });
