@@ -17,30 +17,27 @@
     <style>
         /* ========== ABOUT PAGE DESIGN SYSTEM ========== */
 
-        /* Download CV Button - Solid style */
+        /* Download CV Link - Left-aligned text link with underline */
         .cv-download-section {
-            text-align: center;
-            margin: 60px 0 80px 0;
+            text-align: left;
+            margin: 40px 0 60px 0;
         }
 
-        .btn-download-cv {
+        .cv-download-link {
             display: inline-block;
-            background: #111;
-            color: #fff;
-            padding: 14px 36px;
-            border: none;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            letter-spacing: 0.02em;
+            color: #111;
+            text-decoration: underline;
+            text-underline-offset: 3px;
             cursor: pointer;
-            text-decoration: none;
             font-family: 'Inter', sans-serif;
-            transition: background 0.2s ease, transform 0.2s ease;
+            transition: color 0.2s ease;
+            letter-spacing: 0.01em;
         }
 
-        .btn-download-cv:hover {
-            background: #333;
-            transform: translateY(-1px);
+        .cv-download-link:hover {
+            color: #666;
         }
 
         /* Hidden CV Container for PDF Generation */
@@ -241,9 +238,11 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>High-stakes visual assets for reporting and investment decks for major corporations</li>
-                            <li>Bespoke one-on-one collaboration with visionaries (ministers, scientists, C-suite) to
-                                translate complex concepts into visual narratives</li>
+                            <li><strong>Corporate Strategy:</strong> High-stakes visual assets for reporting and
+                                investment decks for major corporations</li>
+                            <li><strong>Executive Support:</strong> Bespoke one-on-one collaboration with visionaries
+                                (ministers, scientists, C-suite) to translate complex concepts into visual narratives
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -260,10 +259,12 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>Analytical reports and presentations for federal leadership</li>
-                            <li>Full-cycle visual production: from print and branding to large-scale multimedia displays
-                            </li>
-                            <li>Visual communications for national infrastructure objectives</li>
+                            <li><strong>Executive Visualization:</strong> Analytical reports and presentations for
+                                federal leadership</li>
+                            <li><strong>Multi-format Production:</strong> Full-cycle visual production from print and
+                                branding to large-scale multimedia displays</li>
+                            <li><strong>Institutional Branding:</strong> Visual communications for national
+                                infrastructure objectives</li>
                         </ul>
                     </div>
                 </div>
@@ -280,8 +281,10 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>Design of large-scale sociological publications and data-driven editorial</li>
-                            <li>Transforming raw data into structured visual concepts</li>
+                            <li><strong>Research Visualization:</strong> Design of large-scale sociological publications
+                                and data-driven editorial</li>
+                            <li><strong>Strategic Packaging:</strong> Transforming raw data into structured visual
+                                concepts</li>
                         </ul>
                     </div>
                 </div>
@@ -298,10 +301,10 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>Digital strategy leadership for federal/regional election cycles under high pressure
-                            </li>
-                            <li>Managing a 50+ member media department; full-cycle content production, KPIs, and
-                                training</li>
+                            <li><strong>Election Campaigns:</strong> Digital strategy leadership for federal/regional
+                                election cycles under high pressure</li>
+                            <li><strong>Leadership:</strong> Managing a 50+ member media department; full-cycle content
+                                production, KPIs, and training</li>
                         </ul>
                     </div>
                 </div>
@@ -318,8 +321,9 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>SMM & Content Strategy for brand growth</li>
-                            <li>Design production and content planning for premium brand presence</li>
+                            <li><strong>SMM Strategy:</strong> Content strategy for brand growth</li>
+                            <li><strong>Design Production:</strong> Design production and content planning for premium
+                                brand presence</li>
                         </ul>
                     </div>
                 </div>
@@ -396,9 +400,9 @@
             </div>
         </section>
 
-        <!-- DOWNLOAD CV BUTTON -->
+        <!-- DOWNLOAD CV LINK -->
         <div class="cv-download-section">
-            <button class="btn-download-cv" onclick="generateCV()">Download CV (PDF)</button>
+            <a href="javascript:void(0)" class="cv-download-link" onclick="generateCV()">Download CV (PDF)</a>
         </div>
 
         <!-- Hidden CV Content for PDF Generation -->

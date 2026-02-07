@@ -17,30 +17,27 @@
     <style>
         /* ========== ABOUT PAGE DESIGN SYSTEM ========== */
 
-        /* Download CV Button - Solid style */
+        /* Download CV Link - Left-aligned text link with underline */
         .cv-download-section {
-            text-align: center;
-            margin: 60px 0 80px 0;
+            text-align: left;
+            margin: 40px 0 60px 0;
         }
 
-        .btn-download-cv {
+        .cv-download-link {
             display: inline-block;
-            background: #111;
-            color: #fff;
-            padding: 14px 36px;
-            border: none;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            letter-spacing: 0.02em;
+            color: #111;
+            text-decoration: underline;
+            text-underline-offset: 3px;
             cursor: pointer;
-            text-decoration: none;
             font-family: 'Inter', sans-serif;
-            transition: background 0.2s ease, transform 0.2s ease;
+            transition: color 0.2s ease;
+            letter-spacing: 0.01em;
         }
 
-        .btn-download-cv:hover {
-            background: #333;
-            transform: translateY(-1px);
+        .cv-download-link:hover {
+            color: #666;
         }
 
         /* Hidden CV Container for PDF Generation */
@@ -241,10 +238,11 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>Разработка визуальных активов для отчетности и инвестиционных презентаций крупных
-                                компаний</li>
-                            <li>Прямое сотрудничество с визионерами (министрами, учеными, топ-менеджментом) по
-                                трансформации сложных идей в визуальные стратегии</li>
+                            <li><strong>Корпоративная стратегия:</strong> Разработка визуальных активов для отчетности и
+                                инвестиционных презентаций крупных компаний</li>
+                            <li><strong>Индивидуальное сопровождение:</strong> Прямое сотрудничество с визионерами
+                                (министрами, учеными, топ-менеджментом) по трансформации сложных идей в визуальные
+                                стратегии</li>
                         </ul>
                     </div>
                 </div>
@@ -261,10 +259,12 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>Аналитические отчеты и презентации для руководства федеральных органов власти</li>
-                            <li>Полный цикл визуального производства: от печати и брендинга до крупноформатных
-                                мультимедийных носителей</li>
-                            <li>Визуальные коммуникации для инфраструктурных задач ведомства</li>
+                            <li><strong>Визуализация для стейкхолдеров:</strong> Аналитические отчеты и презентации для
+                                руководства федеральных органов власти</li>
+                            <li><strong>Мультиформатный продакшн:</strong> Полный цикл визуального производства: от
+                                печати и брендинга до крупноформатных мультимедийных носителей</li>
+                            <li><strong>Институциональный брендинг:</strong> Визуальные коммуникации для
+                                инфраструктурных задач ведомства</li>
                         </ul>
                     </div>
                 </div>
@@ -281,8 +281,10 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>Дизайн крупных социологических изданий и аналитических отчетов</li>
-                            <li>Трансформация данных в структурированные визуальные концепции</li>
+                            <li><strong>Визуализация исследований:</strong> Дизайн крупных социологических изданий и
+                                аналитических отчетов</li>
+                            <li><strong>Смысловая упаковка:</strong> Трансформация данных в структурированные визуальные
+                                концепции</li>
                         </ul>
                     </div>
                 </div>
@@ -299,9 +301,10 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>Руководство цифровой стратегией на всех уровнях избирательных циклов</li>
-                            <li>Формирование и руководство медиа-департаментом (50+ сотрудников), контроль KPI и
-                                обучение персонала</li>
+                            <li><strong>Электоральные проекты:</strong> Руководство цифровой стратегией на всех уровнях
+                                избирательных циклов</li>
+                            <li><strong>Управление:</strong> Формирование и руководство медиа-департаментом (50+
+                                сотрудников), контроль KPI и обучение персонала</li>
                         </ul>
                     </div>
                 </div>
@@ -318,8 +321,9 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li>SMM-стратегия для роста брендов</li>
-                            <li>Дизайн-производство и контент-планирование</li>
+                            <li><strong>SMM-стратегия:</strong> Стратегия контента для роста брендов</li>
+                            <li><strong>Дизайн-производство:</strong> Дизайн-производство и контент-планирование для
+                                премиум-брендов</li>
                         </ul>
                     </div>
                 </div>
@@ -397,9 +401,9 @@
             </div>
         </section>
 
-        <!-- DOWNLOAD CV BUTTON -->
+        <!-- DOWNLOAD CV LINK -->
         <div class="cv-download-section">
-            <button class="btn-download-cv" onclick="generateCV()">Скачать CV (PDF)</button>
+            <a href="javascript:void(0)" class="cv-download-link" onclick="generateCV()">Скачать CV (PDF)</a>
         </div>
 
         <!-- Hidden CV Content for PDF Generation -->

@@ -69,8 +69,8 @@ img {
     --meta-tracking: 0.08em;
     --meta-weight: 500;
 
-    /* Job Title Style (from Work section) */
-    --title-tracking: -0.02em;
+    /* Job Title Style (from Work section - with letter-spacing from Strategic Design) */
+    --title-tracking: 0.05em;
     --title-weight: 500;
 }
 
@@ -115,6 +115,16 @@ h4,
     margin-bottom: 0.75rem;
 }
 
+/* Section Title - "Selected Projects", "More Projects" style */
+.section-title {
+    font-size: var(--meta-size);
+    text-transform: uppercase;
+    letter-spacing: var(--meta-tracking);
+    color: var(--meta-color);
+    font-weight: var(--meta-weight);
+    margin-bottom: 2rem;
+}
+
 /* Section Label Style - for Experience, Education, Technical Stack headers */
 .section-label,
 .about-label {
@@ -125,12 +135,20 @@ h4,
     font-weight: var(--meta-weight);
 }
 
-/* Job Role / Degree Style (Item 4) */
-.role-title {
+/* Job Role / Degree Style (Item 4) - with Strategic Design letter-spacing */
+.role-title,
+.exp-role {
     font-size: 1rem;
     font-weight: var(--title-weight);
     letter-spacing: var(--title-tracking);
     color: #555;
+}
+
+/* More Projects section spacing */
+.more-projects-section {
+    margin-top: 120px;
+    margin-bottom: 100px;
+    padding-top: 60px;
 }
 
 /* =========================================
