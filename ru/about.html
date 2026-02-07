@@ -50,26 +50,91 @@
             margin-bottom: 80px;
         }
 
-        /* Responsive Grid Layout (Experience, Education, Skills) */
+        /* ========== EDITORIAL EXPERIENCE LAYOUT ========== */
+        .experience-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .experience-card:last-child {
+            border-bottom: none;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .exp-company {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .exp-role {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .exp-description {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .exp-description p {
+            margin: 0 0 8px 0;
+        }
+
+        /* Metric Callout */
+        .metric-callout {
+            display: inline-block;
+            background: #f8f8f8;
+            border-left: 3px solid #000;
+            padding: 8px 16px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .metric-callout .metric-value {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #000;
+        }
+
+        /* ========== DEFAULT GRID (Skills, Education) ========== */
         .grid-item {
             display: grid;
             grid-template-columns: 180px 1fr;
-            /* Default for Skills */
             gap: 30px;
-            margin-bottom: 48px;
-        }
-
-        /* Specific Override for Experience: 140px Column, 40px Gap */
-        .grid-item.experience-layout {
-            grid-template-columns: 140px 1fr;
-            gap: 40px;
             margin-bottom: 48px;
         }
 
         .grid-item .label-col {
             color: #888;
             font-size: 0.95rem;
-            /* Typography Fixes */
             hyphens: none !important;
             word-break: normal !important;
             line-height: 1.5;
@@ -80,42 +145,21 @@
             line-height: 1.6;
         }
 
-        /* Job Title Styling */
-        .job-title {
-            font-size: 1.15rem;
-            /* Increased size */
-            font-weight: 700;
-            display: block;
-            /* Ensure new line */
-            margin-bottom: 4px;
-        }
-
-        .org-name {
-            display: block;
-            color: #666;
-            margin-bottom: 12px;
-        }
-
-        .grid-item .content-col ul {
-            padding-left: 20px;
-            margin: 0;
-            margin-top: 8px;
-        }
-
-        .grid-item .content-col li {
-            margin-bottom: 4px;
-        }
-
-        /* Bold Headers in Skills */
-        .skill-header {
-            font-weight: 600;
-            margin-right: 5px;
-        }
-
         @media (max-width: 768px) {
+            .experience-card {
+                padding: 30px 0;
+            }
 
-            .grid-item,
-            .grid-item.experience-layout {
+            .exp-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .exp-company {
+                font-size: 1.2rem;
+            }
+
+            .grid-item {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
@@ -165,100 +209,86 @@
 
         <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 80px;">
 
-        <!-- EXPERIECE -->
+        <!-- EXPERIENCE -->
         <section class="about-section about-grid">
             <div class="about-label">Опыт работы</div>
             <div class="about-content">
 
-                <!-- Item 1 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2019 – по наст. время</div>
-                    <div class="content-col">
-                        <span class="job-title">Проектный консалтинг</span>
-                        <span class="org-name">Стратегический дизайн и визуальные нарративы</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Корпоративная стратегия:</strong> Разработка визуальных активов для отчетности,
-                                инвестиционных презентаций и стратегических коммуникаций крупных компаний и инициатив.
-                            </li>
-                            <li><strong>Индивидуальное сопровождение:</strong> Прямое сотрудничество с визионерами — от
-                                ведущих ученых до топ-менеджмента — по трансформации сложных авторских идей в
-                                убедительные визуальные стратегии тет-а-тет.</li>
-                        </ul>
+                <!-- Консалтинг -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Проектный консалтинг</span>
+                        <span class="exp-date">2019 – наст. время</span>
+                    </div>
+                    <div class="exp-role">Стратегический дизайн и визуальные нарративы</div>
+                    <div class="exp-description">
+                        <p><strong>Корпоративная стратегия:</strong> Разработка визуальных активов для отчетности и
+                            инвестиционных презентаций крупных компаний.</p>
+                        <p><strong>Индивидуальное сопровождение:</strong> Прямое сотрудничество с визионерами
+                            (министрами, учеными, топ-менеджментом) по трансформации сложных идей в визуальные стратегии
+                            тет-а-тет.</p>
+                        <div class="metric-callout"><span class="metric-value">7+</span> лет стратегического дизайна
+                        </div>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2024 – 2025</div>
-                    <div class="content-col">
-                        <span class="job-title">Ведущий дизайнер</span>
-                        <span class="org-name">Федеральное дорожное агентство</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Визуализация для стейкхолдеров высшего уровня:</strong> Разработка глубоких
-                                аналитических отчетов и стратегических презентаций для руководства федеральных органов
-                                власти.</li>
-                            <li><strong>Мультиформатный продакшн:</strong> Полный цикл подготовки визуальных материалов:
-                                от печатной продукции и брендинга мероприятий до адаптации контента для крупноформатных
-                                мультимедийных носителей.</li>
-                            <li><strong>Институциональный брендинг:</strong> Курирование визуальных коммуникаций,
-                                соответствующих государственным стандартам и масштабным инфраструктурным задачам
-                                ведомства.</li>
-                        </ul>
+                <!-- Федеральное дорожное агентство -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Федеральное дорожное агентство</span>
+                        <span class="exp-date">2024 – 2025</span>
+                    </div>
+                    <div class="exp-role">Ведущий дизайнер</div>
+                    <div class="exp-description">
+                        <p><strong>Визуализация для стейкхолдеров:</strong> Аналитические отчеты и презентации для
+                            руководства федеральных органов власти.</p>
+                        <p><strong>Мультиформатный продакшн:</strong> От печатной продукции и брендинга до
+                            крупноформатных мультимедийных носителей.</p>
+                        <p><strong>Институциональный брендинг:</strong> Визуальные коммуникации для инфраструктурных
+                            задач ведомства.</p>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2022 – 2026</div>
-                    <div class="content-col">
-                        <span class="job-title">Ведущий дизайнер</span>
-                        <span class="org-name">Центр социологических исследований</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Визуализация исследований:</strong> Визуализация крупных исследований и создание
-                                сложных многостраничных изданий на основе социологических данных.</li>
-                            <li><strong>Смысловая упаковка и редактура:</strong> Анализ и корректировка входящей
-                                информации для точной передачи смыслов; трансформация сырых данных в структурированные
-                                визуальные концепции.</li>
-                            <li><strong>Событийный дизайн:</strong> Разработка брендинга и визуальной айдентики для
-                                форумов, выставок и исследовательских инициатив.</li>
-                        </ul>
+                <!-- Центр социологических исследований -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Центр социологических исследований</span>
+                        <span class="exp-date">2022 – 2026</span>
+                    </div>
+                    <div class="exp-role">Ведущий дизайнер</div>
+                    <div class="exp-description">
+                        <p><strong>Визуализация исследований:</strong> Дизайн крупных социологических изданий и
+                            аналитических отчетов.</p>
+                        <p><strong>Смысловая упаковка:</strong> Трансформация данных в структурированные визуальные
+                            концепции.</p>
                     </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2020 – 2022</div>
-                    <div class="content-col">
-                        <span class="job-title">Региональный руководитель направления цифровых коммуникаций</span>
-                        <span class="org-name">Центр общественных связей</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Электоральные проекты:</strong> Полное руководство цифровой стратегией во всех
-                                уровнях избирательных циклов (федеральных, региональных и местных) в условиях сжатых
-                                сроков и высокого давления.</li>
-                            <li><strong>Масштабное управление:</strong> Формирование и руководство медиа-департаментом
-                                (50+ сотрудников), сквозное управление процессами производства контента, контроль KPI и
-                                обучение персонала.</li>
-                            <li><strong>Антикризисный менеджмент:</strong> Разработка стратегий быстрого реагирования и
-                                управления репутацией в цифровой среде во время ключевых общественно-политических
-                                событий.</li>
-                        </ul>
+                <!-- Центр общественных связей -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Центр общественных связей</span>
+                        <span class="exp-date">2020 – 2022</span>
+                    </div>
+                    <div class="exp-role">Региональный руководитель направления цифровых коммуникаций</div>
+                    <div class="exp-description">
+                        <p><strong>Электоральные проекты:</strong> Руководство цифровой стратегией на всех уровнях
+                            избирательных циклов.</p>
+                        <p><strong>Управление:</strong> Формирование и руководство медиа-департаментом, контроль KPI и
+                            обучение персонала.</p>
+                        <div class="metric-callout"><span class="metric-value">50+</span> сотрудников в команде</div>
                     </div>
                 </div>
 
-                <!-- Item 5 (Smorodina) -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2019 – 2020</div>
-                    <div class="content-col">
-                        <span class="job-title">SMM & Контент-стратегия</span>
-                        <span class="org-name">Агентство Smorodina</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>SMM-стратегия:</strong> Разработка и запуск стратегий продвижения, обеспечивших
-                                рост охватов и вовлеченности для клиентов агентства.</li>
-                            <li><strong>Дизайн-производство:</strong> Создание визуального контента и графических
-                                материалов, объединяющих эстетику и маркетинговые цели.</li>
-                            <li><strong>Контент-планирование:</strong> Управление производством материалов и
-                                копирайтингом для обеспечения качественного присутствия брендов в соцсетях.</li>
-                        </ul>
+                <!-- Агентство Smorodina -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Агентство Smorodina</span>
+                        <span class="exp-date">2019 – 2020</span>
+                    </div>
+                    <div class="exp-role">SMM & Контент-стратегия</div>
+                    <div class="exp-description">
+                        <p>SMM-стратегия для роста брендов. Дизайн-производство и контент-планирование.</p>
                     </div>
                 </div>
 
@@ -400,24 +430,20 @@
             skillsContent.innerHTML = '';
             eduContent.innerHTML = '';
 
-            // Experience Section
-            const experienceItems = document.querySelectorAll('.about-section .about-content .grid-item.experience-layout');
+            // Experience Section - Updated for new card structure
+            const experienceItems = document.querySelectorAll('.experience-card');
             let expHTML = '<h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Опыт работы</h3>';
             experienceItems.forEach(item => {
-                const date = item.querySelector('.label-col')?.textContent || '';
-                const title = item.querySelector('.job-title')?.textContent || '';
-                const org = item.querySelector('.org-name')?.textContent || '';
-                const bullets = item.querySelectorAll('li');
-                expHTML += `<div style="display: grid; grid-template-columns: 130px 1fr; gap: 25px; margin-bottom: 18px;">`;
+                const date = item.querySelector('.exp-date')?.textContent || '';
+                const company = item.querySelector('.exp-company')?.textContent || '';
+                const role = item.querySelector('.exp-role')?.textContent || '';
+                const description = item.querySelector('.exp-description')?.innerHTML || '';
+                expHTML += `<div style="display: grid; grid-template-columns: 110px 1fr; gap: 20px; margin-bottom: 18px;">`;
                 expHTML += `<div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600; padding-top: 4px;">${date}</div>`;
                 expHTML += `<div style="font-size: 10pt;">`;
-                expHTML += `<b style="font-size: 11pt; display: block; margin-bottom: 2px;">${title}</b>`;
-                if (org) expHTML += `<div style="font-size: 9.5pt; color: #666; font-weight: 500; margin-bottom: 4px;">${org}</div>`;
-                if (bullets.length) {
-                    expHTML += '<ul style="margin: 4px 0 0 16px; padding: 0;">';
-                    bullets.forEach(li => expHTML += `<li style="margin-bottom: 2px; list-style-type: square;">${li.innerHTML}</li>`);
-                    expHTML += '</ul>';
-                }
+                expHTML += `<b style="font-size: 11pt; display: block; margin-bottom: 2px;">${company}</b>`;
+                if (role) expHTML += `<div style="font-size: 9.5pt; color: #666; font-weight: 500; margin-bottom: 6px;">${role}</div>`;
+                expHTML += `<div style="font-size: 9pt; line-height: 1.5;">${description}</div>`;
                 expHTML += '</div></div>';
             });
             expContent.innerHTML = expHTML;

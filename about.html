@@ -50,26 +50,91 @@
             margin-bottom: 80px;
         }
 
-        /* Responsive Grid Layout (Experience, Education, Skills) */
+        /* ========== EDITORIAL EXPERIENCE LAYOUT ========== */
+        .experience-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .experience-card:last-child {
+            border-bottom: none;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .exp-company {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .exp-role {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .exp-description {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .exp-description p {
+            margin: 0 0 8px 0;
+        }
+
+        /* Metric Callout */
+        .metric-callout {
+            display: inline-block;
+            background: #f8f8f8;
+            border-left: 3px solid #000;
+            padding: 8px 16px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .metric-callout .metric-value {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #000;
+        }
+
+        /* ========== DEFAULT GRID (Skills, Education) ========== */
         .grid-item {
             display: grid;
             grid-template-columns: 180px 1fr;
-            /* Default for Skills */
             gap: 30px;
-            margin-bottom: 48px;
-        }
-
-        /* Specific Override for Experience: 140px Column, 40px Gap */
-        .grid-item.experience-layout {
-            grid-template-columns: 140px 1fr;
-            gap: 40px;
             margin-bottom: 48px;
         }
 
         .grid-item .label-col {
             color: #888;
             font-size: 0.95rem;
-            /* Typography Fixes */
             hyphens: none !important;
             word-break: normal !important;
             line-height: 1.5;
@@ -80,42 +145,21 @@
             line-height: 1.6;
         }
 
-        /* Job Title Styling */
-        .job-title {
-            font-size: 1.15rem;
-            /* Increased size */
-            font-weight: 700;
-            display: block;
-            /* Ensure new line */
-            margin-bottom: 4px;
-        }
-
-        .org-name {
-            display: block;
-            color: #666;
-            margin-bottom: 12px;
-        }
-
-        .grid-item .content-col ul {
-            padding-left: 20px;
-            margin: 0;
-            margin-top: 8px;
-        }
-
-        .grid-item .content-col li {
-            margin-bottom: 4px;
-        }
-
-        /* Bold Headers in Skills */
-        .skill-header {
-            font-weight: 600;
-            margin-right: 5px;
-        }
-
         @media (max-width: 768px) {
+            .experience-card {
+                padding: 30px 0;
+            }
 
-            .grid-item,
-            .grid-item.experience-layout {
+            .exp-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .exp-company {
+                font-size: 1.2rem;
+            }
+
+            .grid-item {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
@@ -170,91 +214,81 @@
             <div class="about-label">Experience</div>
             <div class="about-content">
 
-                <!-- Item 1 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2019 – Present</div>
-                    <div class="content-col">
-                        <span class="job-title">Project-Based Consultancy</span>
-                        <span class="org-name">Strategic Design & Executive Narrative Design</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Corporate Strategy:</strong> Developing high-stakes visual assets for reporting,
-                                investment decks, and strategic communications for major corporations and initiatives.
-                            </li>
-                            <li><strong>Executive Support:</strong> Bespoke, one-on-one collaboration with visionaries —
-                                from lead scientists to C-suite executives — to translate complex personal visions and
-                                innovative concepts into compelling visual narratives.</li>
-                        </ul>
+                <!-- Consultancy -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Project-Based Consultancy</span>
+                        <span class="exp-date">2019 – Present</span>
+                    </div>
+                    <div class="exp-role">Strategic Design & Executive Narrative</div>
+                    <div class="exp-description">
+                        <p><strong>Corporate Strategy:</strong> High-stakes visual assets for reporting and investment
+                            decks for major corporations.</p>
+                        <p><strong>Executive Support:</strong> Bespoke one-on-one collaboration with visionaries
+                            (ministers, scientists, C-suite) to translate complex concepts into visual narratives.</p>
+                        <div class="metric-callout"><span class="metric-value">7+</span> years of strategic design
+                            practice</div>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2024 – 2025</div>
-                    <div class="content-col">
-                        <span class="job-title">Lead Designer</span>
-                        <span class="org-name">Federal Highway Agency</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Executive Visualization:</strong> Developing high-level analytical reports and
-                                strategic presentations for federal leadership and government authorities.</li>
-                            <li><strong>Multi-format Production:</strong> Full-cycle preparation of visual materials:
-                                from complex print and event branding to content adaptation for large-scale multimedia
-                                displays.</li>
-                            <li><strong>Institutional Branding:</strong> Orchestrating visual communications aligned
-                                with national standards and large-scale infrastructure objectives.</li>
-                        </ul>
+                <!-- Federal Highway Agency -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Federal Highway Agency</span>
+                        <span class="exp-date">2024 – 2025</span>
+                    </div>
+                    <div class="exp-role">Lead Designer</div>
+                    <div class="exp-description">
+                        <p><strong>Executive Visualization:</strong> Analytical reports and presentations for federal
+                            leadership.</p>
+                        <p><strong>Multi-format Production:</strong> From complex print and branding to large-scale
+                            multimedia displays.</p>
+                        <p><strong>Institutional Branding:</strong> Visual communications for national infrastructure
+                            objectives.</p>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2022 – 2026</div>
-                    <div class="content-col">
-                        <span class="job-title">Lead Designer</span>
-                        <span class="org-name">Center for Social Research</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Research Visualization:</strong> Spearheading the design of large-scale
-                                sociological publications and complex data-driven editorial layouts based on big data.
-                            </li>
-                            <li><strong>Strategic Packaging & Editorial:</strong> Analyzing and refining inbound data to
-                                ensure precise messaging; transforming raw data into structured visual concepts.</li>
-                            <li><strong>Event Design:</strong> Developing branding and visual identity for forums,
-                                exhibitions, and research initiatives.</li>
-                        </ul>
+                <!-- Center for Social Research -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Center for Social Research</span>
+                        <span class="exp-date">2022 – 2026</span>
+                    </div>
+                    <div class="exp-role">Lead Designer</div>
+                    <div class="exp-description">
+                        <p><strong>Research Visualization:</strong> Design of large-scale sociological publications and
+                            data-driven editorial.</p>
+                        <p><strong>Strategic Packaging:</strong> Transforming raw data into structured visual concepts.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2020 – 2022</div>
-                    <div class="content-col">
-                        <span class="job-title">Regional Head of Digital Communications</span>
-                        <span class="org-name">Public Relations Office</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>Election Campaigns:</strong> Leading the end-to-end digital strategy for social
-                                media across all election cycles (federal, regional, and local) under tight deadlines
-                                and high political pressure.</li>
-                            <li><strong>Large-scale Leadership:</strong> Building and supervising a media department
-                                (50+ employees); managing full-cycle content production, KPIs, and staff training.</li>
-                            <li><strong>Crisis Management:</strong> Developing rapid-response strategies and reputation
-                                management during critical social and political events.</li>
-                        </ul>
+                <!-- Public Relations Office -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Public Relations Office</span>
+                        <span class="exp-date">2020 – 2022</span>
+                    </div>
+                    <div class="exp-role">Regional Head of Digital Communications</div>
+                    <div class="exp-description">
+                        <p><strong>Election Campaigns:</strong> Digital strategy leadership for federal/regional cycles
+                            under high pressure.</p>
+                        <p><strong>Leadership:</strong> Managed a media department; full-cycle content production, KPIs,
+                            and training.</p>
+                        <div class="metric-callout"><span class="metric-value">50+</span> member team</div>
                     </div>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="grid-item experience-layout">
-                    <div class="label-col">2019 – 2020</div>
-                    <div class="content-col">
-                        <span class="job-title">SMM & Content Strategy</span>
-                        <span class="org-name">Smorodina Agency</span>
-                        <ul style="padding-left: 20px; margin: 0;">
-                            <li><strong>SMM Strategy:</strong> Developing and executing promotion strategies that drove
-                                significant organic reach and engagement for agency clients.</li>
-                            <li><strong>Design Production:</strong> Creating visual content and graphic assets that
-                                bridge high-end aesthetics with strategic marketing goals.</li>
-                            <li><strong>Content Planning:</strong> Managing production workflows and copywriting to
-                                maintain premium brand presence across social platforms.</li>
-                        </ul>
+                <!-- Smorodina Agency -->
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <span class="exp-company">Smorodina Agency</span>
+                        <span class="exp-date">2019 – 2020</span>
+                    </div>
+                    <div class="exp-role">SMM & Content Strategy</div>
+                    <div class="exp-description">
+                        <p>SMM & Content Strategy for brand growth. Design production and content planning for premium
+                            brand presence.</p>
                     </div>
                 </div>
 
@@ -398,24 +432,20 @@
             skillsContent.innerHTML = '';
             eduContent.innerHTML = '';
 
-            // Experience Section
-            const experienceItems = document.querySelectorAll('.about-section .about-content .grid-item.experience-layout');
+            // Experience Section - Updated for new card structure
+            const experienceItems = document.querySelectorAll('.experience-card');
             let expHTML = '<h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Experience</h3>';
             experienceItems.forEach(item => {
-                const date = item.querySelector('.label-col')?.textContent || '';
-                const title = item.querySelector('.job-title')?.textContent || '';
-                const org = item.querySelector('.org-name')?.textContent || '';
-                const bullets = item.querySelectorAll('li');
-                expHTML += `<div style="display: grid; grid-template-columns: 130px 1fr; gap: 25px; margin-bottom: 18px;">`;
+                const date = item.querySelector('.exp-date')?.textContent || '';
+                const company = item.querySelector('.exp-company')?.textContent || '';
+                const role = item.querySelector('.exp-role')?.textContent || '';
+                const description = item.querySelector('.exp-description')?.innerHTML || '';
+                expHTML += `<div style="display: grid; grid-template-columns: 110px 1fr; gap: 20px; margin-bottom: 18px;">`;
                 expHTML += `<div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600; padding-top: 4px;">${date}</div>`;
                 expHTML += `<div style="font-size: 10pt;">`;
-                expHTML += `<b style="font-size: 11pt; display: block; margin-bottom: 2px;">${title}</b>`;
-                if (org) expHTML += `<div style="font-size: 9.5pt; color: #666; font-weight: 500; margin-bottom: 4px;">${org}</div>`;
-                if (bullets.length) {
-                    expHTML += '<ul style="margin: 4px 0 0 16px; padding: 0;">';
-                    bullets.forEach(li => expHTML += `<li style="margin-bottom: 2px; list-style-type: square;">${li.innerHTML}</li>`);
-                    expHTML += '</ul>';
-                }
+                expHTML += `<b style="font-size: 11pt; display: block; margin-bottom: 2px;">${company}</b>`;
+                if (role) expHTML += `<div style="font-size: 9.5pt; color: #666; font-weight: 500; margin-bottom: 6px;">${role}</div>`;
+                expHTML += `<div style="font-size: 9pt; line-height: 1.5;">${description}</div>`;
                 expHTML += '</div></div>';
             });
             expContent.innerHTML = expHTML;
