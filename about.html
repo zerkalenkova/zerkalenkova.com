@@ -15,7 +15,9 @@
     <link rel="alternate" hreflang="en" href="https://zerkalenkova.com/about.html" />
     <link rel="alternate" hreflang="ru" href="https://zerkalenkova.com/ru/about.html" />
     <style>
-        /* Download CV Button */
+        /* ========== ABOUT PAGE DESIGN SYSTEM ========== */
+
+        /* Download CV Button - Solid style */
         .cv-download-section {
             text-align: center;
             margin: 60px 0 80px 0;
@@ -23,13 +25,13 @@
 
         .btn-download-cv {
             display: inline-block;
-            background: #000;
+            background: #111;
             color: #fff;
-            padding: 16px 40px;
+            padding: 14px 36px;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             cursor: pointer;
             text-decoration: none;
             font-family: 'Inter', sans-serif;
@@ -38,7 +40,7 @@
 
         .btn-download-cv:hover {
             background: #333;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         /* Hidden CV Container for PDF Generation */
@@ -50,113 +52,126 @@
             margin-bottom: 80px;
         }
 
-        /* ========== EDITORIAL EXPERIENCE LAYOUT ========== */
+        /* ========== EXPERIENCE BLOCK (New Layout) ========== */
         .experience-card {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0;
-            padding: 40px 0;
+            padding: 32px 0;
             border-bottom: 1px solid #eee;
-            position: relative;
         }
 
         .experience-card:last-child {
             border-bottom: none;
         }
 
+        /* Header: Title | Role — Date */
         .exp-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .exp-titles {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0;
         }
 
         .exp-company {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #000;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #111;
             letter-spacing: -0.02em;
         }
 
-        .exp-date {
-            font-size: 0.85rem;
-            color: #999;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .exp-pipe {
+            margin: 0 10px;
+            color: #ccc;
+            font-weight: 300;
         }
 
         .exp-role {
             font-size: 1rem;
-            color: #666;
             font-weight: 500;
-            margin-bottom: 16px;
+            color: #555;
+            letter-spacing: -0.01em;
+        }
+
+        .exp-date {
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
         .exp-description {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #444;
             line-height: 1.7;
             max-width: 700px;
+        }
+
+        .exp-description ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .exp-description li {
+            margin-bottom: 6px;
         }
 
         .exp-description p {
             margin: 0 0 8px 0;
         }
 
-        /* Metric Callout */
-        .metric-callout {
-            display: inline-block;
-            background: #f8f8f8;
-            border-left: 3px solid #000;
-            padding: 8px 16px;
-            margin: 12px 0;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .metric-callout .metric-value {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #000;
-        }
-
         /* ========== DEFAULT GRID (Skills, Education) ========== */
         .grid-item {
             display: grid;
-            grid-template-columns: 180px 1fr;
+            grid-template-columns: 200px 1fr;
             gap: 30px;
-            margin-bottom: 48px;
+            margin-bottom: 36px;
         }
 
         .grid-item .label-col {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             color: #888;
-            font-size: 0.95rem;
-            hyphens: none !important;
-            word-break: normal !important;
-            line-height: 1.5;
+            font-weight: 500;
+            line-height: 1.8;
         }
 
         .grid-item .content-col {
             color: #333;
             line-height: 1.6;
+            font-weight: 500;
+            letter-spacing: -0.01em;
         }
 
         @media (max-width: 768px) {
             .experience-card {
-                padding: 30px 0;
+                padding: 24px 0;
             }
 
             .exp-header {
                 flex-direction: column;
+                gap: 8px;
+            }
+
+            .exp-titles {
+                flex-direction: column;
                 gap: 4px;
             }
 
+            .exp-pipe {
+                display: none;
+            }
+
             .exp-company {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             .grid-item {
@@ -184,10 +199,10 @@
                 <li><a href="about.html" class="nav-link" style="opacity: 1;">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 <!-- Language Switcher -->
-                <li class="lang-switch" style="margin-left: 10px; opacity: 1;">
-                    <span style="font-weight: 600; cursor: default;">EN</span>
-                    <span style="opacity: 0.3;">|</span>
-                    <a href="ru/about.html" class="nav-link" style="opacity: 0.6;">RU</a>
+                <li class="lang-switch">
+                    <span class="lang-active">EN</span>
+                    <span class="lang-divider">|</span>
+                    <a href="ru/about.html">RU</a>
                 </li>
             </ul>
             <div class="menu-toggle">MENU</div>
@@ -217,78 +232,95 @@
                 <!-- Consultancy -->
                 <div class="experience-card">
                     <div class="exp-header">
-                        <span class="exp-company">Project-Based Consultancy</span>
+                        <div class="exp-titles">
+                            <span class="exp-company">Project-Based Consultancy</span>
+                            <span class="exp-pipe">|</span>
+                            <span class="exp-role">Strategic Design & Executive Narrative</span>
+                        </div>
                         <span class="exp-date">2019 – Present</span>
                     </div>
-                    <div class="exp-role">Strategic Design & Executive Narrative</div>
                     <div class="exp-description">
-                        <p><strong>Corporate Strategy:</strong> High-stakes visual assets for reporting and investment
-                            decks for major corporations.</p>
-                        <p><strong>Executive Support:</strong> Bespoke one-on-one collaboration with visionaries
-                            (ministers, scientists, C-suite) to translate complex concepts into visual narratives.</p>
-                        <div class="metric-callout"><span class="metric-value">7+</span> years of strategic design
-                            practice</div>
+                        <ul>
+                            <li>High-stakes visual assets for reporting and investment decks for major corporations</li>
+                            <li>Bespoke one-on-one collaboration with visionaries (ministers, scientists, C-suite) to
+                                translate complex concepts into visual narratives</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Federal Highway Agency -->
                 <div class="experience-card">
                     <div class="exp-header">
-                        <span class="exp-company">Federal Highway Agency</span>
+                        <div class="exp-titles">
+                            <span class="exp-company">Federal Highway Agency</span>
+                            <span class="exp-pipe">|</span>
+                            <span class="exp-role">Lead Designer</span>
+                        </div>
                         <span class="exp-date">2024 – 2025</span>
                     </div>
-                    <div class="exp-role">Lead Designer</div>
                     <div class="exp-description">
-                        <p><strong>Executive Visualization:</strong> Analytical reports and presentations for federal
-                            leadership.</p>
-                        <p><strong>Multi-format Production:</strong> From complex print and branding to large-scale
-                            multimedia displays.</p>
-                        <p><strong>Institutional Branding:</strong> Visual communications for national infrastructure
-                            objectives.</p>
+                        <ul>
+                            <li>Analytical reports and presentations for federal leadership</li>
+                            <li>Full-cycle visual production: from print and branding to large-scale multimedia displays
+                            </li>
+                            <li>Visual communications for national infrastructure objectives</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Center for Social Research -->
                 <div class="experience-card">
                     <div class="exp-header">
-                        <span class="exp-company">Center for Social Research</span>
+                        <div class="exp-titles">
+                            <span class="exp-company">Center for Social Research</span>
+                            <span class="exp-pipe">|</span>
+                            <span class="exp-role">Lead Designer</span>
+                        </div>
                         <span class="exp-date">2022 – 2026</span>
                     </div>
-                    <div class="exp-role">Lead Designer</div>
                     <div class="exp-description">
-                        <p><strong>Research Visualization:</strong> Design of large-scale sociological publications and
-                            data-driven editorial.</p>
-                        <p><strong>Strategic Packaging:</strong> Transforming raw data into structured visual concepts.
-                        </p>
+                        <ul>
+                            <li>Design of large-scale sociological publications and data-driven editorial</li>
+                            <li>Transforming raw data into structured visual concepts</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Public Relations Office -->
                 <div class="experience-card">
                     <div class="exp-header">
-                        <span class="exp-company">Public Relations Office</span>
+                        <div class="exp-titles">
+                            <span class="exp-company">Public Relations Office</span>
+                            <span class="exp-pipe">|</span>
+                            <span class="exp-role">Regional Head of Digital Communications</span>
+                        </div>
                         <span class="exp-date">2020 – 2022</span>
                     </div>
-                    <div class="exp-role">Regional Head of Digital Communications</div>
                     <div class="exp-description">
-                        <p><strong>Election Campaigns:</strong> Digital strategy leadership for federal/regional cycles
-                            under high pressure.</p>
-                        <p><strong>Leadership:</strong> Managed a media department; full-cycle content production, KPIs,
-                            and training.</p>
-                        <div class="metric-callout"><span class="metric-value">50+</span> member team</div>
+                        <ul>
+                            <li>Digital strategy leadership for federal/regional election cycles under high pressure
+                            </li>
+                            <li>Managing a 50+ member media department; full-cycle content production, KPIs, and
+                                training</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Smorodina Agency -->
                 <div class="experience-card">
                     <div class="exp-header">
-                        <span class="exp-company">Smorodina Agency</span>
+                        <div class="exp-titles">
+                            <span class="exp-company">Smorodina Agency</span>
+                            <span class="exp-pipe">|</span>
+                            <span class="exp-role">SMM & Content Strategy</span>
+                        </div>
                         <span class="exp-date">2019 – 2020</span>
                     </div>
-                    <div class="exp-role">SMM & Content Strategy</div>
                     <div class="exp-description">
-                        <p>SMM & Content Strategy for brand growth. Design production and content planning for premium
-                            brand presence.</p>
+                        <ul>
+                            <li>SMM & Content Strategy for brand growth</li>
+                            <li>Design production and content planning for premium brand presence</li>
+                        </ul>
                     </div>
                 </div>
 

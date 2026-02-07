@@ -53,8 +53,27 @@ img {
 }
 
 /* =========================================
-   TYPOGRAPHY
+   TYPOGRAPHY DESIGN SYSTEM
    ========================================= */
+
+/* --- Design Tokens --- */
+:root {
+    /* Heading Style (from "Strategic Design & Visual Narrative") */
+    --heading-color: #888888;
+    --heading-weight: 400;
+    --heading-tracking: 0.05em;
+
+    /* Meta/Section Labels (from "PORTFOLIO" style) */
+    --meta-size: 0.75rem;
+    --meta-color: #888888;
+    --meta-tracking: 0.08em;
+    --meta-weight: 500;
+
+    /* Job Title Style (from Work section) */
+    --title-tracking: -0.02em;
+    --title-weight: 500;
+}
+
 h1,
 h2,
 h3,
@@ -64,16 +83,19 @@ h4,
     letter-spacing: var(--tracking-tight);
 }
 
+/* Main Title - "Liza Zerkalenkova" style */
 .title-xl {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
     line-height: 1.1;
+    letter-spacing: -0.04em;
 }
 
 .title-lg {
     font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.1;
     font-weight: 500;
+    letter-spacing: -0.04em;
 }
 
 .subtitle {
@@ -83,12 +105,32 @@ h4,
     max-width: 550px;
 }
 
+/* Meta Text (Section labels: PORTFOLIO, Experience, Education, etc.) */
 .text-meta {
-    font-size: 0.75rem;
+    font-size: var(--meta-size);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--gray-medium);
+    letter-spacing: var(--meta-tracking);
+    color: var(--meta-color);
+    font-weight: var(--meta-weight);
     margin-bottom: 0.75rem;
+}
+
+/* Section Label Style - for Experience, Education, Technical Stack headers */
+.section-label,
+.about-label {
+    font-size: var(--meta-size);
+    text-transform: uppercase;
+    letter-spacing: var(--meta-tracking);
+    color: var(--meta-color);
+    font-weight: var(--meta-weight);
+}
+
+/* Job Role / Degree Style (Item 4) */
+.role-title {
+    font-size: 1rem;
+    font-weight: var(--title-weight);
+    letter-spacing: var(--title-tracking);
+    color: #555;
 }
 
 /* =========================================
@@ -141,6 +183,40 @@ nav ul {
 
 .nav-link:hover {
     opacity: 1;
+}
+
+/* Language Switcher - matches nav-link style exactly */
+.lang-switch {
+    font-size: 0.95rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 10px;
+}
+
+.lang-switch a,
+.lang-switch span {
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.lang-switch a {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.lang-switch a:hover {
+    opacity: 1;
+}
+
+.lang-switch .lang-active {
+    font-weight: 600;
+    cursor: default;
+}
+
+.lang-switch .lang-divider {
+    opacity: 0.3;
 }
 
 /* Mobile Nav Toggle (Hidden on Desktop) */
@@ -368,6 +444,7 @@ footer {
     /* Gradient Text Logic */
     background: linear-gradient(180deg, #FFFFFF 0%, #666666 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     padding-bottom: 0.2em;
     /* Ensure descenders aren't cut off */
