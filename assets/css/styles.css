@@ -57,19 +57,27 @@ img {
    ========================================= */
 
 /* --- Design Tokens --- */
+/* --- Design Tokens --- */
 :root {
     /* Heading Style (from "Strategic Design & Visual Narrative") */
-    --heading-color: #888888;
-    --heading-weight: 400;
-    --heading-tracking: 0.05em;
+    --heading-color: #111111;
+    --heading-weight: 800;
+    --heading-tracking: -0.04em;
+
+    /* Subheading Style (Job Titles, Degrees, Skills) */
+    --subheading-weight: 600;
+    --subheading-tracking: 0.03em;
+    --subheading-color: #111111;
 
     /* Meta/Section Labels (from "PORTFOLIO" style) */
     --meta-size: 0.75rem;
-    --meta-color: #888888;
-    --meta-tracking: 0.08em;
+    /* ~12px */
+    --meta-color: #999999;
+    --meta-tracking: 0.2em;
     --meta-weight: 500;
+    --meta-transform: uppercase;
 
-    /* Job Title Style (from Work section - with letter-spacing from Strategic Design) */
+    /* Job Title Style (from Work section) */
     --title-tracking: 0.05em;
     --title-weight: 500;
 }
@@ -86,9 +94,10 @@ h4,
 /* Main Title - "Liza Zerkalenkova" style */
 .title-xl {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.04em;
+    font-weight: var(--heading-weight);
+    line-height: 1.05;
+    letter-spacing: var(--heading-tracking);
+    color: var(--heading-color);
 }
 
 .title-lg {
@@ -106,42 +115,27 @@ h4,
 }
 
 /* Meta Text (Section labels: PORTFOLIO, Experience, Education, etc.) */
-.text-meta {
+.text-meta,
+.section-title,
+.section-label,
+.about-label {
     font-size: var(--meta-size);
-    text-transform: uppercase;
-    letter-spacing: var(--meta-tracking);
-    color: var(--meta-color);
-    font-weight: var(--meta-weight);
-    margin-bottom: 0.75rem;
-}
-
-/* Section Title - "Selected Projects", "More Projects" style */
-.section-title {
-    font-size: var(--meta-size);
-    text-transform: uppercase;
+    text-transform: var(--meta-transform);
     letter-spacing: var(--meta-tracking);
     color: var(--meta-color);
     font-weight: var(--meta-weight);
     margin-bottom: 2rem;
 }
 
-/* Section Label Style - for Experience, Education, Technical Stack headers */
-.section-label,
-.about-label {
-    font-size: var(--meta-size);
-    text-transform: uppercase;
-    letter-spacing: var(--meta-tracking);
-    color: var(--meta-color);
-    font-weight: var(--meta-weight);
-}
-
-/* Job Role / Degree Style (Item 4) - with Strategic Design letter-spacing */
+/* Job Role / Degree Style / Skills Headers */
 .role-title,
-.exp-role {
+.exp-role,
+.degree-label,
+.skills-category {
     font-size: 1rem;
-    font-weight: var(--title-weight);
-    letter-spacing: var(--title-tracking);
-    color: #555;
+    font-weight: var(--subheading-weight);
+    letter-spacing: var(--subheading-tracking);
+    color: var(--subheading-color);
 }
 
 /* More Projects section spacing */
@@ -679,4 +673,78 @@ footer {
 #more-projects h2 {
     font-weight: 600 !important;
     margin-bottom: 40px !important;
+}
+
+/* =========================================
+   PRINT STYLES (CV PDF Generation)
+   ========================================= */
+@media print {
+    @page {
+        size: A4;
+        margin: 20mm;
+        /* Remove browser headers and footers */
+        margin-top: 20mm;
+        margin-bottom: 20mm;
+    }
+
+    /* Fallback: try to hide browser default headers/footers */
+    @page :first {
+        margin-top: 20mm;
+    }
+
+    @page :left {
+        margin-left: 20mm;
+    }
+
+    @page :right {
+        margin-right: 20mm;
+    }
+
+    body {
+        background-color: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Hide standard site elements */
+    header,
+    footer,
+    main,
+    .menu-toggle,
+    iframe,
+    .nav-links-desktop {
+        display: none !important;
+    }
+
+    /* Show and position the CV container */
+    #cv-pdf-content {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        visibility: visible !important;
+        left: auto !important;
+        top: auto !important;
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Force black text for print */
+    #cv-pdf-content * {
+        color: #000000 !important;
+    }
+
+    /* Avoid breaking experience items across pages */
+    .cv-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        display: block;
+    }
+
+    /* Ensure links look clean */
+    a {
+        text-decoration: none !important;
+        color: #000000 !important;
+    }
 }

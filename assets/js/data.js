@@ -7,7 +7,7 @@ const SITE_DATA = {
     profile: {
         name: "Liza Zerkalenkova",
         role: "Executive & Research Presentation Designer",
-        subtitle: "6+ years of experience designing sociological studies, large-scale reports, and strategic presentations for senior stakeholders.",
+        subtitle: "7+ years of experience designing sociological studies, large-scale reports, and strategic presentations for senior stakeholders.",
         cta: {
             text: "Have a complex project?\nLet’s work together.",
             email: "hello@zerkalenkova.com",

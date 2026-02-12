@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Обо мне | Лиза Зеркаленкова</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <!-- PDF Generation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- PDF Generation Library Removed (Using native print) -->
+
 
     <!-- SEO & Localization -->
     <link rel="canonical" href="https://zerkalenkova.com/ru/about.html" />
@@ -17,33 +18,7 @@
     <style>
         /* ========== ABOUT PAGE DESIGN SYSTEM ========== */
 
-        /* Download CV Link - Left-aligned text link with underline */
-        .cv-download-section {
-            text-align: left;
-            margin: 40px 0 60px 0;
-        }
 
-        .cv-download-link {
-            display: inline-block;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #111;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            transition: color 0.2s ease;
-            letter-spacing: 0.01em;
-        }
-
-        .cv-download-link:hover {
-            color: #666;
-        }
-
-        /* Hidden CV Container for PDF Generation */
-        #cv-pdf-content {
-            display: none;
-        }
 
         .about-section {
             margin-bottom: 80px;
@@ -60,6 +35,7 @@
         }
 
         /* Header: Title | Role — Date */
+        /* Header: Company | Role — Date */
         .exp-header {
             display: flex;
             justify-content: space-between;
@@ -76,39 +52,42 @@
             gap: 0;
         }
 
-        .exp-company {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #111;
-            letter-spacing: -0.02em;
+        /* Job Titles: Subheading Style (Semi-bold, 0.03em tracking) */
+        .exp-role {
+            font-weight: var(--subheading-weight);
+            letter-spacing: var(--subheading-tracking);
+            color: var(--subheading-color);
+            font-size: 1rem;
         }
 
         .exp-pipe {
-            margin: 0 10px;
+            margin: 0 8px;
             color: #ccc;
             font-weight: 300;
         }
 
-        .exp-role {
+        .exp-company {
             font-size: 1rem;
-            font-weight: 500;
-            color: #555;
-            letter-spacing: -0.01em;
+            font-weight: 400;
+            /* Regular */
+            color: #111;
         }
 
+        /* Dates: Metadata Style (0.2em tracking, #999) */
         .exp-date {
             font-size: 0.75rem;
-            color: #888;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+            /* ~12px */
+            color: var(--meta-color);
+            font-weight: var(--meta-weight);
+            text-transform: var(--meta-transform);
+            letter-spacing: var(--meta-tracking);
         }
 
         .exp-description {
             font-size: 0.95rem;
             color: #444;
             line-height: 1.7;
-            max-width: 700px;
+            max-width: 1200px;
         }
 
         .exp-description ul {
@@ -182,6 +161,9 @@
             }
         }
     </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicon-64.png">
 </head>
 
 <body>
@@ -216,6 +198,11 @@
                 помогаю организациям и исследователям превращать большие объемы информации в понятные и сильные
                 визуальные истории.
             </p>
+            <div style="margin-top: 30px;">
+                <button onclick="generateCV()"
+                    style="padding: 12px 24px; background: #000; color: #fff; border: none; font-family: 'Inter', sans-serif; font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 0.9rem;">Скачать
+                    резюме (PDF)</button>
+            </div>
         </section>
 
         <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 80px;">
@@ -237,9 +224,9 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li><strong>Корпоративная стратегия:</strong> Разработка визуальных активов для отчетности и
+                            <li><strong>Корпоративная стратегия:</strong> разработка визуальных активов для отчетности и
                                 инвестиционных презентаций крупных компаний</li>
-                            <li><strong>Индивидуальное сопровождение:</strong> Прямое сотрудничество с визионерами
+                            <li><strong>Индивидуальное сопровождение:</strong> прямое сотрудничество с визионерами
                                 (министрами, учеными, топ-менеджментом) по трансформации сложных идей в визуальные
                                 стратегии</li>
                         </ul>
@@ -258,11 +245,11 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li><strong>Визуализация для стейкхолдеров:</strong> Аналитические отчеты и презентации для
+                            <li><strong>Визуализация для стейкхолдеров:</strong> аналитические отчеты и презентации для
                                 руководства федеральных органов власти</li>
-                            <li><strong>Мультиформатный продакшн:</strong> Полный цикл визуального производства: от
+                            <li><strong>Мультиформатный продакшн:</strong> полный цикл визуального производства: от
                                 печати и брендинга до крупноформатных мультимедийных носителей</li>
-                            <li><strong>Институциональный брендинг:</strong> Визуальные коммуникации для
+                            <li><strong>Институциональный брендинг:</strong> визуальные коммуникации для
                                 инфраструктурных задач ведомства</li>
                         </ul>
                     </div>
@@ -280,9 +267,9 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li><strong>Визуализация исследований:</strong> Дизайн крупных социологических изданий и
+                            <li><strong>Визуализация исследований:</strong> дизайн крупных социологических изданий и
                                 аналитических отчетов</li>
-                            <li><strong>Смысловая упаковка:</strong> Трансформация данных в структурированные визуальные
+                            <li><strong>Смысловая упаковка:</strong> трансформация данных в структурированные визуальные
                                 концепции</li>
                         </ul>
                     </div>
@@ -300,9 +287,9 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li><strong>Электоральные проекты:</strong> Руководство цифровой стратегией на всех уровнях
+                            <li><strong>Электоральные проекты:</strong> руководство цифровой стратегией на всех уровнях
                                 избирательных циклов</li>
-                            <li><strong>Управление:</strong> Формирование и руководство медиа-департаментом (50+
+                            <li><strong>Управление:</strong> формирование и руководство медиа-департаментом (50+
                                 сотрудников), контроль KPI и обучение персонала</li>
                         </ul>
                     </div>
@@ -320,9 +307,8 @@
                     </div>
                     <div class="exp-description">
                         <ul>
-                            <li><strong>SMM-стратегия:</strong> Стратегия контента для роста брендов</li>
-                            <li><strong>Дизайн-производство:</strong> Дизайн-производство и контент-планирование для
-                                премиум-брендов</li>
+                            <li><strong>SMM-стратегия:</strong> создание стратегий продвижения</li>
+                            <li><strong>Дизайн-производство:</strong> визкальное оформление соцмедиа брендов</li>
                         </ul>
                     </div>
                 </div>
@@ -338,18 +324,18 @@
             <div class="about-content">
 
                 <div class="grid-item">
-                    <div class="label-col">Магистр: Реклама и связи с общественностью</div>
-                    <div class="content-col">СКФУ</div>
+                    <div class="label-col">Магистр: Реклама и связи с общественностью</div>
+                    <div class="content-col">Северо-Кавказский федеральный университет</div>
                 </div>
 
                 <div class="grid-item">
-                    <div class="label-col">Бакалавр: Реклама и связи с общественностью</div>
-                    <div class="content-col">СКФУ</div>
+                    <div class="label-col">Бакалавр: Реклама и связи с общественностью</div>
+                    <div class="content-col">Северо-Кавказский федеральный университет</div>
                 </div>
 
                 <div class="grid-item">
                     <div class="label-col">Бакалавр: Гражданское право</div>
-                    <div class="content-col">МГЭУ</div>
+                    <div class="content-col">Московский гуманитарно-экономический университет</div>
                 </div>
 
             </div>
@@ -400,32 +386,6 @@
             </div>
         </section>
 
-        <!-- DOWNLOAD CV LINK -->
-        <div class="cv-download-section">
-            <a href="javascript:void(0)" class="cv-download-link" onclick="generateCV()">Скачать CV (PDF)</a>
-        </div>
-
-        <!-- Hidden CV Content for PDF Generation -->
-        <div id="cv-pdf-content">
-            <div
-                style="font-family: 'Inter', sans-serif; padding: 50px 60px; max-width: 800px; margin: auto; color: #1a1a1a; line-height: 1.5;">
-                <h1
-                    style="font-size: 28pt; margin: 0; text-transform: uppercase; letter-spacing: -1px; font-weight: 800;">
-                    Лиза Зеркаленкова</h1>
-                <div style="font-size: 13pt; font-weight: 500; color: #555; margin: 10px 0 20px 0;">Стратегический
-                    дизайн и визуальные нарративы</div>
-                <div style="font-size: 9pt; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px;">
-                    <b>Портфолио:</b> <a href="https://zerkalenkova.com"
-                        style="color: #000; font-weight: 800;">zerkalenkova.com</a> |
-                    <b>Email:</b> <a href="mailto:hello@zerkalenkova.com"
-                        style="color: #000; font-weight: 800;">hello@zerkalenkova.com</a> |
-                    <b>TG:</b> @zzerkaliza
-                </div>
-                <div id="cv-experience-content"></div>
-                <div id="cv-skills-content"></div>
-                <div id="cv-education-content"></div>
-            </div>
-        </div>
 
 
     </main>
@@ -453,72 +413,132 @@
 
     <script src="../assets/js/main-ru.js"></script>
 
-    <!-- CV PDF Generation Script -->
+
+    <!-- Hidden CV Container -->
+    <!-- Hidden CV Container -->
+    <div id="cv-pdf-content" style="display: none;">
+        <div style="width: 800px; padding: 40px; background: white; color: black; font-family: 'Inter', sans-serif;">
+            <!-- Header -->
+            <div style="border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 40px;">
+                <h1
+                    style="font-size: 32pt; font-weight: 800; text-transform: uppercase; margin: 0 0 10px 0; color: #000; letter-spacing: -0.02em;">
+                    Лиза Зеркаленкова</h1>
+                <div style="font-size: 11pt; color: #000; margin-top: 8px;">
+                    <a href="https://zerkalenkova.com"
+                        style="text-decoration: none; color: #000; font-weight: 600;">zerkalenkova.com</a>
+                </div>
+            </div>
+
+
+
+            <!-- Experience -->
+            <section style="margin-bottom: 25px;">
+                <h3
+                    style="font-size: 11pt; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 15px; color: #000;">
+                    Опыт работы</h3>
+                <div id="cv-experience-list"></div>
+            </section>
+
+            <!-- Education -->
+            <section style="margin-bottom: 30px;">
+                <h3
+                    style="font-size: 11pt; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 15px; color: #000;">
+                    Образование</h3>
+                <div id="cv-education-list"></div>
+            </section>
+
+            <!-- Skills -->
+            <section>
+                <h3
+                    style="font-size: 11pt; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 15px; color: #000;">
+                    Навыки</h3>
+                <div id="cv-skills-list" style="display: grid; grid-template-columns: 1fr; gap: 8px;"></div>
+            </section>
+        </div>
+    </div>
+
+    <!-- CV Generation Script -->
     <script>
         function generateCV() {
-            const cvContainer = document.getElementById('cv-pdf-content');
-            const expContent = document.getElementById('cv-experience-content');
-            const skillsContent = document.getElementById('cv-skills-content');
-            const eduContent = document.getElementById('cv-education-content');
+            const cvWrapper = document.getElementById('cv-pdf-content');
+            if (!cvWrapper) return;
 
-            expContent.innerHTML = '';
-            skillsContent.innerHTML = '';
-            eduContent.innerHTML = '';
+            // Populate Experience (Filtered)
+            const allowedCompanies = ['Проектный консалтинг', 'Федеральное дорожное агентство', 'Центр социологических исследований', 'Центр общественных связей', 'Агентство Smorodina'];
+            const expContainer = document.getElementById('cv-experience-list');
+            expContainer.innerHTML = '';
+            document.querySelectorAll('.experience-card').forEach(card => {
+                const company = card.querySelector('.exp-company')?.innerText || '';
+                if (!allowedCompanies.some(c => company.includes(c))) return;
+                const role = card.querySelector('.exp-role')?.innerText || '';
+                // company already defined
+                const date = card.querySelector('.exp-date')?.innerText || '';
 
-            // Experience Section - Updated for new card structure
-            const experienceItems = document.querySelectorAll('.experience-card');
-            let expHTML = '<h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Опыт работы</h3>';
-            experienceItems.forEach(item => {
-                const date = item.querySelector('.exp-date')?.textContent || '';
-                const company = item.querySelector('.exp-company')?.textContent || '';
-                const role = item.querySelector('.exp-role')?.textContent || '';
-                const description = item.querySelector('.exp-description')?.innerHTML || '';
-                expHTML += `<div style="display: grid; grid-template-columns: 110px 1fr; gap: 20px; margin-bottom: 18px;">`;
-                expHTML += `<div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600; padding-top: 4px;">${date}</div>`;
-                expHTML += `<div style="font-size: 10pt;">`;
-                expHTML += `<b style="font-size: 11pt; display: block; margin-bottom: 2px;">${company}</b>`;
-                if (role) expHTML += `<div style="font-size: 9.5pt; color: #666; font-weight: 500; margin-bottom: 6px;">${role}</div>`;
-                expHTML += `<div style="font-size: 9pt; line-height: 1.5;">${description}</div>`;
-                expHTML += '</div></div>';
-            });
-            expContent.innerHTML = expHTML;
+                const descList = card.querySelector('.exp-description ul');
+                const descHTML = descList ? descList.innerHTML : '';
 
-            // Skills Section
-            const skillsItems = document.querySelectorAll('.about-section:last-of-type .grid-item:not(.experience-layout)');
-            let skillsHTML = '<h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Инструменты</h3>';
-            skillsItems.forEach(item => {
-                const label = item.querySelector('.label-col')?.textContent || '';
-                const content = item.querySelector('.content-col')?.textContent?.trim() || '';
-                skillsHTML += `<div style="display: grid; grid-template-columns: 130px 1fr; gap: 25px; margin-bottom: 12px;">`;
-                skillsHTML += `<div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600;">${label}</div>`;
-                skillsHTML += `<div style="font-size: 10pt;">${content}</div>`;
-                skillsHTML += '</div>';
-            });
-            skillsContent.innerHTML = skillsHTML;
+                const item = document.createElement('div');
+                item.className = 'cv-item';
+                item.style.marginBottom = '20px';
 
-            // Education
-            eduContent.innerHTML = `
-                <h3 style="font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; margin: 25px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 800;">Образование</h3>
-                <div style="display: grid; grid-template-columns: 130px 1fr; gap: 25px; margin-bottom: 12px;">
-                    <div style="font-size: 8pt; text-transform: uppercase; color: #999; font-weight: 600;">Академическое</div>
-                    <div style="font-size: 10pt;">
-                        <b>Магистратура и бакалавриат по рекламе и PR</b> | СКФУ<br>
-                        <b>Бакалавриат по гражданскому праву</b> | МГУЭ
+                item.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                        <div>
+                            <span style="font-weight: 700; font-size: 11pt;">${role}</span>
+                            <span style="margin: 0 5px; color: #000;">|</span>
+                            <span style="font-size: 11pt; font-weight: 400;">${company}</span>
+                        </div>
+                        <div style="font-size: 9pt; font-weight: 500; color: #000;">${date}</div>
                     </div>
-                </div>
-            `;
-
-            cvContainer.style.display = 'block';
-            const opt = {
-                margin: 0,
-                filename: 'CV_Liza_Zerkalenkova_RU.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(cvContainer).save().then(() => {
-                cvContainer.style.display = 'none';
+                    <ul style="font-size: 10pt; padding-left: 18px; margin: 0; line-height: 1.4; color: #000;">
+                        ${descHTML}
+                    </ul>
+                `;
+                expContainer.appendChild(item);
             });
+
+            // Populate Education
+            const eduContainer = document.getElementById('cv-education-list');
+            if (eduContainer) {
+                eduContainer.innerHTML = `
+                    <div class="cv-item" style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <span style="font-weight: 700; font-size: 11pt;">Магистр: Реклама и связи с общественностью</span>
+                            <span style="font-size: 9pt; font-weight: 500;">2023–2025</span>
+                        </div>
+                        <div style="font-size: 11pt; font-weight: 400;">Северо-Кавказский федеральный университет</div>
+                    </div>
+                    <div class="cv-item" style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <span style="font-weight: 700; font-size: 11pt;">Бакалавр: Реклама и связи с общественностью</span>
+                            <span style="font-size: 9pt; font-weight: 500;">2019–2023</span>
+                        </div>
+                        <div style="font-size: 11pt; font-weight: 400;">Северо-Кавказский федеральный университет</div>
+                    </div>
+                    <div class="cv-item" style="margin-bottom: 15px;">
+                        <div style="font-weight: 700; font-size: 11pt; margin-bottom: 4px;">Бакалавр: Гражданское право</div>
+                        <div style="font-size: 11pt; font-weight: 400;">Московский гуманитарно-экономический университет</div>
+                    </div>
+                `;
+            }
+
+            // Populate Skills
+            const skillsContainer = document.getElementById('cv-skills-list');
+            skillsContainer.innerHTML = '';
+            const skillItems = document.querySelectorAll('.about-section:last-of-type .grid-item');
+            skillItems.forEach(item => {
+                const label = item.querySelector('.label-col')?.innerText || '';
+                const text = item.querySelector('.content-col')?.innerText || '';
+
+                const div = document.createElement('div');
+                div.className = 'cv-item';
+                div.innerHTML = `<strong style="font-size: 10pt;">${label}:</strong> <span style="font-size: 10pt;">${text}</span>`;
+                skillsContainer.appendChild(div);
+            });
+
+            // cvWrapper handled by CSS
+
+            window.print();
         }
     </script>
 
